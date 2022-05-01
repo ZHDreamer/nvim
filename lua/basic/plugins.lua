@@ -27,9 +27,7 @@ return require('packer').startup(function()
     -- feline
     use {
         'feline-nvim/feline.nvim',
-        config = function()
-            require('feline').setup()
-        end
+        require('feline').setup()
     }
 end)
 
