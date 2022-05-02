@@ -273,7 +273,7 @@ windline.setup({
         colors.blue = '#f7be95'     -- replace mode
         colors.green = '#a4b9ef'    -- insert mode
         colors.red = '#ee7389'      -- command mode
-        colors.NormalBg = '#332e41'
+        colors.NormalBg = '#302d41'
         colors.InactiveBg = '#332e41'
         colors.ActiveBg = '#332e41'
 
