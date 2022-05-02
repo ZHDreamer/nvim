@@ -69,11 +69,12 @@ return require('packer').startup(function()
 --            require('').setup()
 --        end
 --    }
+
     -- windline
     use {
         "windwp/windline.nvim",
         config = function()
-            require ('wlsample.airline')
+            require ('plugins.windline')
         end
     }
 

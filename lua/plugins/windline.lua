@@ -59,7 +59,12 @@ airline_colors.c = {
     Command = { 'white', 'red_c' },
 }
 
-basic.divider = { b_components.divider, hl_list.Normal }
+basic.divider = {
+    b_components.divider,
+    hl_list.Normal
+}
+
+basic.bg = { ' ', 'StatusLine' }
 
 local width_breakpoint = 100
 
@@ -183,7 +188,7 @@ basic.git = {
     name = 'git',
     width = width_breakpoint,
     hl_colors = {
-        green = { 'green', 'NormalBg' },
+        green = { 'yellow', 'NormalBg' },
         red = { 'red', 'NormalBg' },
         blue = { 'blue', 'NormalBg' },
     },
@@ -262,6 +267,15 @@ windline.setup({
             end
             return HSL.rgb_to_hsl(c):shade(value):to_rgb()
         end
+
+        colors.magenta = '#b595ed'  -- normal mode
+        colors.yellow = '#9dc75a'   -- visual mode
+        colors.blue = '#f7be95'     -- replace mode
+        colors.green = '#a4b9ef'    -- insert mode
+        colors.red = '#ee7389'      -- command mode
+        colors.NormalBg = '#332e41'
+        colors.InactiveBg = '#332e41'
+        colors.ActiveBg = '#332e41'
 
         colors.magenta_a = colors.magenta
         colors.magenta_b = mod(colors.magenta,0.5)
