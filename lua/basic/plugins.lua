@@ -62,14 +62,6 @@ return require('packer').startup(function()
         end
     }
 
---    -- feline
---    use {
---        'feline-nvim/feline.nvim',
---        config = function()
---            require('').setup()
---        end
---    }
-
     -- windline
     use {
         "windwp/windline.nvim",
@@ -97,6 +89,15 @@ return require('packer').startup(function()
         },
         config = function()
             require('plugins.bufferline')
+        end
+    }
+
+    -- indent line
+--        use 'lukas-reineke/indent-blankline.nvim'
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function()
+            require('plugins.indent-blankline')
         end
     }
 end)

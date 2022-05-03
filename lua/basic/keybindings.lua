@@ -31,14 +31,15 @@ keymap({'n', 'v'}, 'i', 'l') -- right
 keymap('', 'u', 'k') -- up
 keymap('', 'e', 'j') -- down
 keymap('', 'N', '^')
+keymap('', 'NN', '0')
 keymap('', 'I', '$')
 keymap('', 'U', '5k')
 keymap('', 'E', '5j')
 keymap('n', '-', 'Nzz')
 keymap('n', '=', 'nzz')
 
-keymap('n', 'k', 'i') -- k for insert
-keymap('n', 'K', 'I')
+keymap('', 'k', 'i') -- k for insert
+keymap('', 'K', 'I')
 keymap('n', 'l', 'u') -- l for undo
 keymap('n', 'L', 'U')
 

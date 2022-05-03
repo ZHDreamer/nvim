@@ -29,7 +29,7 @@ require("catppuccin").setup(
             notify = true,
             indent_blankline = {
                 enabled = true,
-                colored_indent_levels = false
+                colored_indent_levels = true,
             },
             nvimtree = {
                 enabled = true,
