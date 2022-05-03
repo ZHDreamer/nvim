@@ -1,17 +1,17 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
     install_path,
   }
-  print "Installing packer close and reopen Neovim..."
+  print 'Installing packer close and reopen Neovim...'
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -24,7 +24,7 @@ vim.cmd [[
 ]]
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
+local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
   return
 end
@@ -33,7 +33,7 @@ end
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "rounded" }
+      return require('packer.util').float { border = 'rounded' }
     end,
   },
 }
@@ -52,19 +52,19 @@ return require('packer').startup(function()
     }
     -- nvim-tree
     use {
-        "kyazdani42/nvim-tree.lua",
+        'kyazdani42/nvim-tree.lua',
         requires = {
             -- 依赖一个图标插件
-            "kyazdani42/nvim-web-devicons"
+            'kyazdani42/nvim-web-devicons'
         },
         config = function()
-            require("plugins.nvim-tree")
+            require('plugins.nvim-tree')
         end
     }
 
     -- windline
     use {
-        "windwp/windline.nvim",
+        'windwp/windline.nvim',
         config = function()
             require ('plugins.windline')
         end
@@ -72,6 +72,7 @@ return require('packer').startup(function()
 
     -- gitsigns
     use {
+
         'lewis6991/gitsigns.nvim',
         requires = {
             'nvim-lua/plenary.nvim'
@@ -100,5 +101,17 @@ return require('packer').startup(function()
             require('plugins.indent-blankline')
         end
     }
+
+    -- surround
+
+    use 'tpope/vim-surround'
+--     use {
+--         'ur4ltz/surround.nvim',
+--         config = function()
+--             require'surround'.setup {
+--                 mappings_style = 'surround'
+--             }
+--         end
+--     }
 end)
 
