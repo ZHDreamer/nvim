@@ -116,7 +116,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 
 vim.g.nvim_tree_add_trailing = 1
 
--- 按 leader 1 打开文件树
+-- 按 leader t 打开文件树
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 -- 按 leader fc 在文件树中找到当前以打开文件的位置
 vim.keymap.set("n", "<leader>fc", "<cmd>NvimTreeFindFile<CR>")

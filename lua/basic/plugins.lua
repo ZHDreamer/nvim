@@ -88,5 +88,16 @@ return require('packer').startup(function()
             require('gitsigns').setup()
         end
     }
+
+    -- bufferline
+    use {
+        'akinsho/bufferline.nvim',
+        requires = {
+            'kyazdani42/nvim-web-devicons'
+        },
+        config = function()
+            require('plugins.bufferline')
+        end
+    }
 end)
 

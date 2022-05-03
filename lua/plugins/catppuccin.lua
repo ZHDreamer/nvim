@@ -3,7 +3,7 @@
 require("catppuccin").setup(
     {
         -- 透明背景
-        transparent_background = true,
+        transparent_background = false,
         -- 使用终端背景色
         term_color = true,
         -- 代码样式
