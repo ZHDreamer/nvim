@@ -1,5 +1,5 @@
 -- local keymap = function (...)
---   --get the extra options 
+--   --get the extra options
 --   local opts = { noremap = true, silent = true }
 --   local keys = { ... }
 --   for i, v in pairs(keys) do
