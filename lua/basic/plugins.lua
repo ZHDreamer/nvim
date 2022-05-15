@@ -38,86 +38,94 @@ packer.init {
     },
 }
 
-return require('packer').startup(function()
-    -- 包管理器
-    use 'wbthomason/packer.nvim'
+if (not vim.g.vscode) then
+    return require('packer').startup(function()
+        -- 包管理器
+        use 'wbthomason/packer.nvim'
 
-    -- color scheme
-    use {
-        'catppuccin/nvim',
-        as = 'catppuccin',
-        config = function()
-            require('plugins.catppuccin')
-        end
-    }
-    -- nvim-tree
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {
-            -- 依赖一个图标插件
-            'kyazdani42/nvim-web-devicons'
-        },
-        config = function()
-            require('plugins.nvim-tree')
-        end
-    }
+        -- color scheme
+        use {
+            'catppuccin/nvim',
+            as = 'catppuccin',
+            config = function()
+                require('plugins.catppuccin')
+            end
+        }
+        -- nvim-tree
+        use {
+            'kyazdani42/nvim-tree.lua',
+            requires = {
+                -- 依赖一个图标插件
+                'kyazdani42/nvim-web-devicons'
+            },
+            config = function()
+                require('plugins.nvim-tree')
+            end
+        }
 
-    -- windline
-    use {
-        'windwp/windline.nvim',
-        config = function()
-            require ('plugins.windline')
-        end
-    }
+        -- windline
+        use {
+            'windwp/windline.nvim',
+            config = function()
+                require ('plugins.windline')
+            end
+        }
 
-    -- gitsigns
-    use {
+        -- gitsigns
+        use {
 
-        'lewis6991/gitsigns.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        },
-        config = function()
-            require('gitsigns').setup()
-        end
-    }
+            'lewis6991/gitsigns.nvim',
+            requires = {
+                'nvim-lua/plenary.nvim'
+            },
+            config = function()
+                require('gitsigns').setup()
+            end
+        }
 
-    -- bufferline
-    use {
-        'akinsho/bufferline.nvim',
-        requires = {
-            'kyazdani42/nvim-web-devicons'
-        },
-        config = function()
-            require('plugins.bufferline')
-        end
-    }
+        -- bufferline
+        use {
+            'akinsho/bufferline.nvim',
+            requires = {
+                'kyazdani42/nvim-web-devicons'
+            },
+            config = function()
+                require('plugins.bufferline')
+            end
+        }
 
-    -- indent line
-    -- use 'lukas-reineke/indent-blankline.nvim'
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require('plugins.indent-blankline')
-        end
-    }
+        -- indent line
+        -- use 'lukas-reineke/indent-blankline.nvim'
+        use {
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                require('plugins.indent-blankline')
+            end
+        }
 
-    -- surround
+        -- surround
 
-    use 'tpope/vim-surround'
---     use {
---         'ur4ltz/surround.nvim',
---         config = function()
---             require'surround'.setup {
---                 mappings_style = 'surround'
---             }
---         end
---     }
-    use {
-        'junegunn/vim-easy-align',
-        config = function()
-            vim.keymap.set({ 'n', 'v' }, 'ga', '<Plug>(EasyAlign)')
-        end
-    }
-end)
+        use 'tpope/vim-surround'
+    --     use {
+    --         'ur4ltz/surround.nvim',
+    --         config = function()
+    --             require'surround'.setup {
+    --                 mappings_style = 'surround'
+    --             }
+    --         end
+    --     }
+        use {
+            'junegunn/vim-easy-align',
+            config = function()
+                vim.keymap.set({ 'n', 'v' }, 'ga', '<Plug>(EasyAlign)')
+            end
+        }
+    end)
+else
+    return require('packer').startup(function()
+        use 'wbthomason/packer.nvim'
+
+        use 'tpope/vim-surround'
+    end)
+end
 
