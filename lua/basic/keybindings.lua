@@ -66,3 +66,5 @@ keymap("n", "<C-Down>", ":resize +2<CR>")
 
 keymap('n', 'R', ':e<CR>')
 keymap('n', '<C-s>', ':w<CR>')
+
+keymap('n', '<Enter>', 'A<Enter><esc>')
