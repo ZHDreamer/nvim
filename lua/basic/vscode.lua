@@ -3,12 +3,12 @@ local keymap = vim.keymap.set
 -- curser movement for colemak
 keymap('', 'n', 'h') -- left
 keymap('', 'i', 'l') -- right
-keymap('', 'u', 'k') -- up
-keymap('', 'e', 'j') -- down
+keymap('', 'u', 'gk') -- up
+keymap('', 'e', 'gj') -- down
 keymap('', 'N', '^')
 keymap('', 'I', '$')
-keymap('', 'U', '5k')
-keymap('', 'E', '5j')
+keymap('', 'U', '5gk')
+keymap('', 'E', '5gj')
 keymap('n', 'j', 'nzz')
 keymap('n', 'J', 'Nzz')
 
