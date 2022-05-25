@@ -3,8 +3,8 @@ local keymap = vim.keymap.set
 -- curser movement for colemak
 keymap('', 'n', 'h') -- left
 keymap('', 'i', 'l') -- right
-keymap('', 'u', 'gk') -- up
-keymap('', 'e', 'gj') -- down
+keymap('', 'u', 'gk',{remap = true}) -- up
+keymap('', 'e', 'gj',{remap = true}) -- down
 keymap('', 'N', '^')
 keymap('', 'I', '$')
 keymap('', 'U', '5gk')
@@ -34,5 +34,3 @@ keymap("n", "<C-Up>", ":resize -2<CR>")
 keymap("n", "<C-Down>", ":resize +2<CR>")
 
 keymap('n', '<Enter>', 'A<Enter><esc>')
-
-keymap('n', '<A-3>', '<cmd>call VSCodeNotify("workbench.action.firstEditorInGroup")<CR><cmd>call VSCodeNotify("workkench.action.nextEditorInGroup")<CR>')
