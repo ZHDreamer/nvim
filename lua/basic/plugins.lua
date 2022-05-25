@@ -129,6 +129,17 @@ if (not vim.g.vscode) then
                 require("nvim-picgo").setup()
             end
         }
+
+        -- Markdown Preview
+--         use{
+--             "iamcco/markdown-preview.nvim",
+--             run = function() vim.fn["mkdp#util#install"]() end,
+--         }
+
+        use{
+            "davidgranstrom/nvim-markdown-preview"
+        }
+
     end)
 else
     return require('packer').startup(function()
