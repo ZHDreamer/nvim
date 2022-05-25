@@ -120,6 +120,15 @@ if (not vim.g.vscode) then
                 vim.keymap.set({ 'n', 'v' }, 'ga', '<Plug>(EasyAlign)')
             end
         }
+
+        -- Markdown PicGo
+        use {
+            "askfiy/nvim-picgo",
+            config = function()
+                -- it doesn't require you to do any configuration
+                require("nvim-picgo").setup()
+            end
+        }
     end)
 else
     return require('packer').startup(function()
