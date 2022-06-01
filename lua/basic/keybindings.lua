@@ -24,17 +24,16 @@ local keymap = vim.keymap.set
 keymap('', '<Space>', '<Nop>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
 -- curser movement for colemak
 keymap('', 'n', 'h') -- left
 keymap({'n', 'v'}, 'i', 'l') -- right
-keymap('', 'u', 'k') -- up
-keymap('', 'e', 'j') -- down
+keymap('', 'u', 'gk') -- up
+keymap('', 'e', 'gj') -- down
 keymap('', 'N', '^')
 keymap('', 'NN', '0')
 keymap('', 'I', '$')
-keymap('', 'U', '5k')
-keymap('', 'E', '5j')
+keymap('', 'U', '5gk')
+keymap('', 'E', '5gj')
 keymap('n', '-', 'Nzz')
 keymap('n', '=', 'nzz')
 
@@ -68,3 +67,17 @@ keymap('n', 'R', ':e<CR>')
 keymap('n', '<C-s>', ':w<CR>')
 
 keymap('n', '<Enter>', 'A<Enter><esc>')
+
+vim.cmd([[
+function AutoTab()
+    let line = getline('.')
+    let col = col('.')
+    if line[col - 2] == ' ' && line[col - 3] == '-'
+        return "\<Left>\<Left>\<Tab>\<Right>\<Right>"
+    else
+        return "\<Tab>"
+    endif
+endf
+]])
+
+keymap('i', '<Tab>', '<C-r>=AutoTab()<CR>')
