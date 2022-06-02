@@ -30,7 +30,6 @@ keymap({'n', 'v'}, 'i', 'l') -- right
 keymap('', 'u', 'gk') -- up
 keymap('', 'e', 'gj') -- down
 keymap('', 'N', '^')
-keymap('', 'NN', '0')
 keymap('', 'I', '$')
 keymap('', 'U', '5gk')
 keymap('', 'E', '5gj')
