@@ -163,13 +163,19 @@ if (not vim.g.vscode) then
         }
 
         -- Markdown Preview
---         use{
---             "iamcco/markdown-preview.nvim",
---             run = function() vim.fn["mkdp#util#install"]() end,
---         }
+        use{
+            "iamcco/markdown-preview.nvim",
+            run = function() vim.fn["mkdp#util#install"]() end,
+        }
+
+        -- use{
+        --     "davidgranstrom/nvim-markdown-preview"
+        -- }
+
+        -- Markdown
 
         use{
-            "davidgranstrom/nvim-markdown-preview"
+            'preservim/vim-markdown'
         }
         -- zen-mode
         use {
@@ -208,6 +214,7 @@ if (not vim.g.vscode) then
                 require('plugins.nvim-cmp')
             end
         }
+
     end)
 else
     return require('packer').startup(function()
