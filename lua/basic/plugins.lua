@@ -63,6 +63,22 @@ if (not vim.g.vscode) then
             end
         }
 
+        -- save last cursor position
+        use {
+            "ethanholz/nvim-lastplace",
+            config = function()
+                require('plugins.nvim-lastplace')
+            end
+        }
+
+        -- save last session
+        -- use {
+        --     'rmagatti/auto-session',
+        --     config = function()
+        --         require('plugins.auto-session')
+        --     end
+        -- }
+
         -- windline
         use {
             'windwp/windline.nvim',
@@ -103,17 +119,33 @@ if (not vim.g.vscode) then
             end
         }
 
+        -- Autopairs
+        use {
+            'windwp/nvim-autopairs',
+            config = function()
+                require('plugins.nvim-autopairs')
+            end
+        }
+
+        -- comment
+
+        use {
+            'numToStr/Comment.nvim',
+            config = function()
+                require('plugins.nvim-comment')
+            end
+        }
         -- surround
 
         use 'tpope/vim-surround'
-    --     use {
-    --         'ur4ltz/surround.nvim',
-    --         config = function()
-    --             require'surround'.setup {
-    --                 mappings_style = 'surround'
-    --             }
-    --         end
-    --     }
+        -- use {
+        --     'ur4ltz/surround.nvim',
+        --     config = function()
+        --         require'surround'.setup {
+        --             mappings_style = 'surround'
+        --         }
+        --     end
+        -- }
         use {
             'junegunn/vim-easy-align',
             config = function()
@@ -176,9 +208,6 @@ if (not vim.g.vscode) then
                 require('plugins.nvim-cmp')
             end
         }
-
-        
-
     end)
 else
     return require('packer').startup(function()

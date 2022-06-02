@@ -64,7 +64,7 @@ cmp.setup(
                 cmp.config.compare.score,
                 cmp.config.compare.recently_used,
                 require("cmp-under-comparator").under,
-                require("cmp_tabnine.compare"),
+                -- require("cmp_tabnine.compare"),
                 cmp.config.compare.kind,
                 cmp.config.compare.sort_text,
                 cmp.config.compare.length,
@@ -78,7 +78,7 @@ cmp.setup(
             -- 下一个
             ["<C-e>"] = cmp.mapping.select_next_item(),
             -- 选择补全
-            ["<CR>"] = cmp.mapping.confirm(),
+            ["<CR>"] = cmp.mapping.confirm({ select = false }),
             --  出现或关闭补全
             ["<C-k>"] = cmp.mapping(
                 {
@@ -103,11 +103,7 @@ cmp.setup(
             ["<Tab>"] = cmp.mapping(
                 function(fallback)
                     if cmp.visible() then
-                        local entry = cmp.get_selected_entry()
-                        if not entry then
-                            cmp.select_next_item({behavior = cmp.SelectBehavior.Select})
-                        end
-                        cmp.confirm()
+                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                     else
                         fallback()
                     end
