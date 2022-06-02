@@ -33,8 +33,6 @@ keymap('', 'N', '^')
 keymap('', 'I', '$')
 keymap('', 'U', '5gk')
 keymap('', 'E', '5gj')
-keymap('n', '-', 'Nzz')
-keymap('n', '=', 'nzz')
 
 keymap('', 'k', 'i') -- k for insert
 keymap('', 'K', 'I')
@@ -56,6 +54,11 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>")
 keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 keymap("n", "<C-Up>", ":resize -2<CR>")
 keymap("n", "<C-Down>", ":resize +2<CR>")
+
+-- Search
+keymap('n', 'J', 'Nzz') -- previous search item
+keymap('n', 'j', 'nzz') -- next search item
+keymap('n', '<ESC>', '<cmd>nohlsearch<CR>') -- cancel search highlight
 
 -- tabs
 -- keymap('n', '<leader>t', '<cmd>tabnew<CR>') -- creat new tab
