@@ -18,17 +18,18 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- auto indent
-vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.smartindent = false
 vim.opt.filetype = 'plugin'
 
 -- system
 vim.opt.clipboard = 'unnamedplus' -- use system clipboard
 if vim.fn.has('wsl') then
-  vim.cmd [[
-  augroup Yank
-  autocmd!
-  autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
-  augroup END
-  ]]
+    vim.cmd [[
+    augroup Yank
+    autocmd!
+    autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
+    augroup END
+    ]]
 end
 vim.opt.mouse = 'a'               -- enable mouse

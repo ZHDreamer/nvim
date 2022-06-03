@@ -1,6 +1,7 @@
 -- https://github.com/catppuccin/nvim
-
-require("catppuccin").setup(
+local catppuccin = require('catppuccin')
+ 
+catppuccin.setup(
     {
         -- 透明背景
         transparent_background = false,
@@ -8,11 +9,11 @@ require("catppuccin").setup(
         term_color = true,
         -- 代码样式
         styles = {
-            comments = "italic",
-            functions = "NONE",
-            keywords = "NONE",
-            strings = "NONE",
-            variables = "NONE"
+            comments = 'italic',
+            functions = 'NONE',
+            keywords = 'NONE',
+            strings = 'NONE',
+            variables = 'NONE'
         },
         -- 为不同的插件统一样式风格
         -- 尽管这里有一些插件还没有安装，但是先将它们
@@ -40,16 +41,16 @@ require("catppuccin").setup(
             native_lsp = {
                 enabled = true,
                 virtual_text = {
-                    errors = "italic",
-                    hints = "italic",
-                    warnings = "italic",
-                    information = "italic"
+                    errors = 'italic',
+                    hints = 'italic',
+                    warnings = 'italic',
+                    information = 'italic'
                 },
                 underlines = {
-                    errors = "underline",
-                    hints = "underline",
-                    warnings = "underline",
-                    information = "underline"
+                    errors = 'underline',
+                    hints = 'underline',
+                    warnings = 'underline',
+                    information = 'underline'
                 }
             },
             -- 后面我们自己会手动设置
@@ -57,6 +58,14 @@ require("catppuccin").setup(
         }
     }
 )
+
+catppuccin.remap({
+    htmlBold = {
+        gui=bold,
+        guifg=Cyan,
+        ctermfg=124
+    }
+})
 
 -- 应用主题
 vim.cmd([[colorscheme catppuccin]])

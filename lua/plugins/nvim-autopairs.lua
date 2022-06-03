@@ -3,13 +3,14 @@ require('nvim-autopairs').setup(
     -- Before        Input         After
     -- ------------------------------------
     -- (  |))         (            (  (|))
-    enable_check_bracket_line = false,
+    enable_check_bracket_line = true,
 
     -- Before        Input         After
     -- ------------------------------------
     -- |foobar        (            (|foobar
     -- |.foobar       (            (|.foobar
-    ignored_next_char = '[%w%.]' -- will ignore alphanumeric and `.` symbol
+    ignored_next_char = '[%w%.]', -- will ignore alphanumeric and `.` symbol
+    map_cr = true
     }
 )
 

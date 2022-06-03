@@ -16,12 +16,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup end
-]]
+vim.cmd([[
+augroup packer_user_config
+autocmd!
+autocmd BufWritePost plugins.lua source <afile> | PackerSync
+augroup end
+]])
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, 'packer')
@@ -33,7 +33,7 @@ end
 packer.init {
     display = {
         open_fn = function()
-        return require('packer.util').float { border = 'rounded' }
+            return require('packer.util').float { border = 'rounded' }
         end,
     },
 }
@@ -78,6 +78,14 @@ if (not vim.g.vscode) then
         --         require('plugins.auto-session')
         --     end
         -- }
+
+        use{
+            'olimorris/persisted.nvim',
+            -- module = 'persisted',
+            config = function()
+                require('plugins.persisted')
+            end
+        }
 
         -- windline
         use {
@@ -127,8 +135,15 @@ if (not vim.g.vscode) then
             end
         }
 
-        -- comment
+        -- Switch words
+        use {
+            'AndrewRadev/switch.vim',
+            config = function()
+                require('plugins.switch')
+            end
+        }
 
+        -- comment
         use {
             'numToStr/Comment.nvim',
             config = function()
@@ -174,19 +189,32 @@ if (not vim.g.vscode) then
 
         -- Markdown
 
-        use{
-            'preservim/vim-markdown'
-        }
+        -- use{
+        --     'preservim/vim-markdown',
+        --     config = function()
+        --         require('plugins.vim-markdown')
+        --     end
+        -- }
+
+        -- use {
+        --     'tpope/vim-markdown',
+        --     config = function()
+        --         vim.cmd([[
+        --             let g:markdown_fenced_languages = ['c','cpp','python','java','lua']
+        --             let g:markdown_minlines = 100
+        --         ]])
+        --     end
+        -- }
         -- zen-mode
         use {
             "folke/zen-mode.nvim",
             config = function()
                 require("zen-mode").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-          end
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                    -- refer to the configuration section below
+                }
+            end
         }
 
         --  ██████╗███╗   ███╗██████╗
