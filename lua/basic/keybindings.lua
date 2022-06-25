@@ -26,13 +26,15 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- curser movement for colemak
 keymap('', 'n', 'h') -- left
-keymap({'n', 'v'}, 'i', 'l') -- right
-keymap('', 'u', 'gk') -- up
-keymap('', 'e', 'gj') -- down
+keymap('', 'i', 'l') -- right
+keymap('n', 'u', 'gk') -- up
+keymap('n', 'e', 'gj') -- down
+keymap({ 'v', 'o' }, 'u', 'k') -- up
+keymap({ 'v', 'o' }, 'e', 'j') -- down
 keymap('', 'N', '^')
 keymap('', 'I', '$')
-keymap('', 'U', '5gk')
-keymap('', 'E', '5gj')
+keymap('n', 'U', '5gk')
+keymap('n', 'E', '5gj')
 
 keymap('', 'k', 'i') -- k for insert
 keymap('', 'K', 'I')
@@ -64,6 +66,7 @@ keymap('n', '<ESC>', '<cmd>nohlsearch<CR>') -- cancel search highlight
 -- keymap('n', '<leader>t', '<cmd>tabnew<CR>') -- creat new tab
 -- keymap('n', '<Tab>', '<cmd>tabn<CR>') -- tab to next tab
 -- keymap('n', '<S-Tab>', '<cmd>tabp<CR>') -- shift + tab to previous tab
+-- keymap('n', '<Tab>', '>>')
 
 keymap('n', 'R', ':e<CR>')
 keymap('n', '<C-s>', ':w<CR>')
@@ -83,3 +86,5 @@ endf
 ]])
 
 keymap('i', '<Tab>', '<C-r>=AutoTab()<CR>')
+keymap('i', '<C-t>', '<C-d>')
+keymap('i', '<C-d>', '<C-t>')

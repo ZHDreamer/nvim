@@ -10,7 +10,7 @@ vim.opt.scrolloff = 10  -- keep n lines on scroll vertical
 -- show tab and trail space
 vim.opt.list = true
 vim.opt.listchars:append("trail:⋅")
-vim.opt.listchars:append("tab:--")
+vim.opt.listchars:append("tab:>-")
 
 -- search
 vim.opt.hlsearch = true
@@ -18,8 +18,10 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- auto indent
-vim.opt.autoindent = true
-vim.opt.smartindent = false
+vim.opt.autoindent = false
+vim.opt.smartindent = true
+vim.opt.smarttab = true -- tab will align with indent length
+-- vim.opt.shiftaround = true -- <, >, <C-d>, <C-t> will align with indent length
 vim.opt.filetype = 'plugin'
 
 -- system

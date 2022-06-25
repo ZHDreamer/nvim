@@ -4,4 +4,6 @@ vim.bo.tabstop = tabs    -- Number of spaces that a <Tab> in the file counts for
 vim.bo.softtabstop = tabs-- Number of spaces that a <Tab> counts for convertint tab to space
 vim.bo.shiftwidth = tabs
 
-vim.bo.smartindent = true
+vim.bo.smartindent = false
+vim.bo.autoindent = true
+

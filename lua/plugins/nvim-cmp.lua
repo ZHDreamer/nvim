@@ -40,7 +40,10 @@ cmp.setup(
                 {name = "buffer"},
                 {name = "cmdline"},
                 {name = "spell"},
-                {name = "cmp_tabnine"}
+                -- {name = "cmp_tabnine"},
+            },
+            {
+                {name = 'latex_symbols'}
             }
         ),
         -- 格式化补全菜单
