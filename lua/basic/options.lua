@@ -9,8 +9,8 @@ vim.opt.scrolloff = 10  -- keep n lines on scroll vertical
 
 -- show tab and trail space
 vim.opt.list = true
-vim.opt.listchars:append("trail:⋅")
-vim.opt.listchars:append("tab:>-")
+vim.opt.listchars:append('trail:⋅')
+vim.opt.listchars:append('tab:>-')
 
 -- search
 vim.opt.hlsearch = true
@@ -26,12 +26,17 @@ vim.opt.filetype = 'plugin'
 
 -- system
 vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+-- 
 if vim.fn.has('wsl') then
     vim.cmd [[
-    augroup Yank
-    autocmd!
-    autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
-    augroup END
+        let s:clip = '/mnt/c/Windows/System32/clip.exe'
+        if executable(s:clip)
+            augroup WSLYank
+                autocmd!
+                autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+            augroup END
+        endif
     ]]
 end
+
 vim.opt.mouse = 'a'               -- enable mouse

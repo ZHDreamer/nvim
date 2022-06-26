@@ -150,6 +150,7 @@ if (not vim.g.vscode) then
         -- Markdown PicGo
         use {
             'askfiy/nvim-picgo',
+            ft = { 'markdown' },
             config = function()
                 -- it doesn't require you to do any configuration
                 require('nvim-picgo').setup()
@@ -159,6 +160,7 @@ if (not vim.g.vscode) then
         -- Markdown Preview
         use{
             'iamcco/markdown-preview.nvim',
+            ft = { 'markdown' },
             run = function() vim.fn['mkdp#util#install']() end,
         }
 
