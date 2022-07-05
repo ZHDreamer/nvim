@@ -7,6 +7,8 @@ vim.opt.cursorline = true  -- show cursor line
 vim.opt.wrap = true    -- auto wrap long line
 vim.opt.scrolloff = 10  -- keep n lines on scroll vertical
 
+vim.cmd [[au VimLeave * set guicursor=a:ver25-blinkon1]]
+
 -- show tab and trail space
 vim.opt.list = true
 vim.opt.listchars:append('trail:⋅')
@@ -21,6 +23,11 @@ vim.opt.smartcase = true
 vim.opt.autoindent = false
 vim.opt.smartindent = true
 vim.opt.smarttab = true -- tab will align with indent length
+vim.bo.expandtab = true  -- replace tab with space
+local tabs = 4           -- how many spaces replace tab
+vim.bo.tabstop = tabs
+vim.bo.softtabstop = tabs
+vim.bo.shiftwidth = tabs
 -- vim.opt.shiftaround = true -- <, >, <C-d>, <C-t> will align with indent length
 vim.opt.filetype = 'plugin'
 

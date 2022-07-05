@@ -207,6 +207,10 @@ if (not vim.g.vscode) then
             end
         }
 
+        use {
+            'connorholyday/vim-snazzy'
+        }
+
         -- Status line
         use {
             'windwp/windline.nvim',

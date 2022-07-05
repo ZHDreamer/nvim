@@ -18,7 +18,7 @@ telescope.setup({
 })
 
 -- 查找文件
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files <CR>')
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files hidden=true <CR>')
 -- 查找文字
 vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep <CR>')
 -- 查找特殊符号
