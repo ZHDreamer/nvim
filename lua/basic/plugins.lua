@@ -203,7 +203,10 @@ if (not vim.g.vscode) then
             as = 'catppuccin',
             config = function()
                 require('plugins.catppuccin')
-                vim.cmd([[colorscheme catppuccin]])
+                vim.cmd[[
+                    colorscheme catppuccin
+                    Catppuccin mocha
+                ]]
             end
         }
 
