@@ -17,7 +17,7 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- auto indent
+-- indent
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.smarttab = true -- tab will align with indent length
@@ -31,17 +31,5 @@ vim.opt.shiftround = true -- <, >, <C-d>, <C-t> will align with indent length
 
 -- system
 vim.opt.clipboard = 'unnamedplus' -- use system clipboard
--- -- 
--- if vim.fn.has('wsl') then
---     vim.cmd [[
---         let s:clip = '/mnt/c/Windows/System32/clip.exe'
---         if executable(s:clip)
---             augroup WSLYank
---                 autocmd!
---                 autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
---             augroup END
---         endif
---     ]]
--- end
-
 vim.opt.mouse = 'a'               -- enable mouse
+vim.opt.undofile = true           -- keep undo history

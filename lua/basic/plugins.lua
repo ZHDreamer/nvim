@@ -164,12 +164,7 @@ if (not vim.g.vscode) then
             run = function() vim.fn['mkdp#util#install']() end,
         }
 
-        -- use{
-        --     'davidgranstrom/nvim-markdown-preview'
-        -- }
-
         -- Markdown
-
 
         -- use{
         --     'preservim/vim-markdown',
