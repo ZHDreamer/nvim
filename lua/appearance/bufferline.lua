@@ -1,31 +1,43 @@
 -- https://github.com/akinsho/bufferline.nvim
-vim.keymap.set('n', '<A-1>', '<Cmd>BufferLineGoToBuffer 1<CR>')
-vim.keymap.set('n', '<A-2>', '<Cmd>BufferLineGoToBuffer 2<CR>')
-vim.keymap.set('n', '<A-3>', '<Cmd>BufferLineGoToBuffer 3<CR>')
-vim.keymap.set('n', '<A-4>', '<Cmd>BufferLineGoToBuffer 4<CR>')
-vim.keymap.set('n', '<A-5>', '<Cmd>BufferLineGoToBuffer 5<CR>')
-vim.keymap.set('n', '<A-6>', '<Cmd>BufferLineGoToBuffer 6<CR>')
-vim.keymap.set('n', '<A-7>', '<Cmd>BufferLineGoToBuffer 7<CR>')
-vim.keymap.set('n', '<A-8>', '<Cmd>BufferLineGoToBuffer 8<CR>')
-vim.keymap.set('n', '<A-9>', '<Cmd>BufferLineGoToBuffer 9<CR>')
-vim.keymap.set('n', '<A-0>', '<Cmd>BufferLineGoToBuffer 10<CR>')
-vim.keymap.set('n', '<A-r>', '<Cmd>BufferLineCyclePrev<CR>')
-vim.keymap.set('n', '<A-t>', '<Cmd>BufferLineCycleNext<CR>')
-vim.keymap.set('n', '<A-q>', '<Cmd>bd<CR>')
-vim.keymap.set('n', '<A-z>', '<Cmd>b#<CR>')
+vim.keymap.set('n', '<A-1>', ':BufferLineGoToBuffer 1<CR>')
+vim.keymap.set('n', '<A-2>', ':BufferLineGoToBuffer 2<CR>')
+vim.keymap.set('n', '<A-3>', ':BufferLineGoToBuffer 3<CR>')
+vim.keymap.set('n', '<A-4>', ':BufferLineGoToBuffer 4<CR>')
+vim.keymap.set('n', '<A-5>', ':BufferLineGoToBuffer 5<CR>')
+vim.keymap.set('n', '<A-6>', ':BufferLineGoToBuffer 6<CR>')
+vim.keymap.set('n', '<A-7>', ':BufferLineGoToBuffer 7<CR>')
+vim.keymap.set('n', '<A-8>', ':BufferLineGoToBuffer 8<CR>')
+vim.keymap.set('n', '<A-9>', ':BufferLineGoToBuffer 9<CR>')
+vim.keymap.set('n', '<A-0>', ':BufferLineGoToBuffer 10<CR>')
+vim.keymap.set('n', '<A-r>', ':BufferLineCyclePrev<CR>')
+vim.keymap.set('n', '<A-s>', ':BufferLineCycleNext<CR>')
+vim.keymap.set('n', '<A-t>', ':BufferLinePick<CR>')
+vim.keymap.set('n', '<A-q>', ':bd<CR>')
+vim.keymap.set('n', '<A-z>', ':b#<CR>')
 
+local mocha = require('catppuccin.palettes').get_palette('mocha')
 require('bufferline').setup {
     options = {
+        themable = true,
         mode = "buffers", -- set to "tabs" to only show tabpages instead
         numbers = 'none',
         close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
         right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
         left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
         middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
+        -- neovim 8.0 support hover event
+        hover = {
+            enabled = false,
+            delay = 200,
+            reveal = {'close'}
+        },
         -- NOTE: this plugin is designed with this icon in mind,
         -- and so changing this is NOT recommended, this is intended
         -- as an escape hatch for people who cannot bear it for whatever reason
-        indicator_icon = '▎',
+        indicator = {
+            icon = '▎',
+            style = 'icon',
+        },
         buffer_close_icon = '',
         modified_icon = '●',
         close_icon = '',
@@ -74,21 +86,31 @@ require('bufferline').setup {
                 filetype = "NvimTree",
                 text = "File Explorer",
                 highlight = "Directory",
-                text_align = "left"
+                text_align = "center"
             }
         },
         color_icons = true, -- whether or not to add the filetype icon highlights
         show_buffer_icons = true, -- disable filetype icons for buffers
         show_buffer_close_icons = true,
-        show_buffer_default_icon = false, -- whether or not an unrecognised filetype should show a default icon
+        show_buffer_default_icon = true, -- whether or not an unrecognised filetype should show a default icon
         show_close_icon = false,
         show_tab_indicators = true,
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = 'thick',
+        separator_style = 'thin',
         enforce_regular_tabs = false,
-        always_show_bufferline = true,
-        sort_by = 'insert_after_current'
-    }
+        always_show_bufferline = false,
+        sort_by = 'insert_after_current',
+    },
+    highlights = require('catppuccin.groups.integrations.bufferline').get {
+        styles = { 'bold' },
+        custom = {
+            all = {
+                buffer_selected = {
+                    italic = false,
+                },
+            },
+        },
+    },
 }

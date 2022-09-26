@@ -1,0 +1,99 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.007  000.007: --- NVIM STARTING ---
+000.193  000.186: locale set
+000.398  000.205: inits 1
+000.406  000.009: window checked
+000.409  000.003: parsing arguments
+001.968  001.559: init lua interpreter
+002.129  000.162: expanding arguments
+002.146  000.017: inits 2
+002.401  000.255: init highlight
+002.403  000.002: waiting for UI
+003.197  000.794: done waiting for UI
+003.213  000.016: init screen for UI
+003.229  000.016: init default mappings
+003.256  000.027: init default autocommands
+004.038  000.049  000.049: sourcing /usr/share/nvim/runtime/ftplugin.vim
+004.165  000.021  000.021: sourcing /usr/share/nvim/runtime/indent.vim
+004.221  000.010  000.010: sourcing /usr/share/nvim/archlinux.vim
+004.224  000.026  000.016: sourcing /etc/xdg/nvim/sysinit.vim
+008.364  004.126  004.126: sourcing /home/zhdreamer/.config/nvim/init.lua
+008.384  000.905: sourcing vimrc file(s)
+008.597  000.043  000.043: sourcing /usr/share/nvim/runtime/filetype.lua
+013.194  000.011  000.011: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+013.225  000.017  000.017: sourcing /usr/share/vim/vimfiles/ftdetect/meson.vim
+013.430  004.819  004.791: sourcing /usr/share/nvim/runtime/filetype.vim
+013.643  000.052  000.052: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+013.728  000.239  000.186: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+014.362  000.013  000.013: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+014.401  000.013  000.013: sourcing /usr/share/nvim/runtime/plugin/health.vim
+014.540  000.126  000.126: sourcing /usr/share/nvim/runtime/plugin/man.vim
+014.560  000.009  000.009: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+014.671  000.101  000.101: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+014.988  000.303  000.303: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+015.118  000.008  000.008: sourcing /home/zhdreamer/.local/share/nvim/rplugin.vim
+015.124  000.108  000.100: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+015.215  000.076  000.076: sourcing /usr/share/nvim/runtime/plugin/shada.vim
+015.242  000.009  000.009: sourcing /usr/share/nvim/runtime/plugin/spellfile.vim
+015.266  000.011  000.011: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+015.285  000.007  000.007: sourcing /usr/share/nvim/runtime/plugin/tohtml.vim
+015.309  000.012  000.012: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+015.332  000.011  000.011: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+015.788  000.381  000.381: sourcing /usr/share/vim/vimfiles/plugin/fzf.vim
+016.807  000.197  000.197: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/opt/switch.vim/plugin/switch.vim
+032.021  004.949  004.949: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/catppuccin/colors/catppuccin.lua
+034.971  001.108  001.108: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/catppuccin/colors/catppuccin.lua
+069.003  000.170  000.170: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig/plugin/lspconfig.lua
+090.577  074.721  068.297: sourcing /home/zhdreamer/.config/nvim/plugin/packer_compiled.lua
+090.769  001.383: loading rtp plugins
+091.189  000.105  000.105: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/Comment.nvim/plugin/Comment.lua
+091.273  000.014  000.014: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/catppuccin/plugin/catppuccin.vim
+091.925  000.381  000.381: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim/plugin/indent_blankline.vim
+092.048  000.020  000.020: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/neoformat/plugin/neoformat.vim
+092.768  000.633  000.633: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/nvim-cmp/plugin/cmp.lua
+092.858  000.026  000.026: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua/plugin/colorizer.vim
+094.162  001.171  001.171: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/nvim-treesitter/plugin/nvim-treesitter.lua
+094.317  000.032  000.032: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/rainbow/plugin/rainbow_main.vim
+094.520  000.097  000.097: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-easy-align/plugin/easy_align.vim
+094.991  000.131  000.131: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-im-select/autoload/im_select.vim
+095.097  000.499  000.368: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-im-select/plugin/im_select.vim
+095.446  000.251  000.251: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-surround/plugin/surround.vim
+096.117  000.149  000.149: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/vsnip.vim
+096.343  000.050  000.050: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/_vsnip/VS/LSP/Position.vim
+096.477  000.018  000.018: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/_vsnip.vim
+096.701  000.849  000.632: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vsnip/snippet.vim
+096.966  000.109  000.109: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/_vsnip/VS/LSP/TextEdit.vim
+097.199  000.045  000.045: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/_vsnip/VS/LSP/Text.vim
+097.504  000.091  000.091: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/_vsnip/VS/Vim/Buffer.vim
+097.742  000.037  000.037: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/_vsnip/VS/Vim/Option.vim
+098.069  000.098  000.098: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vital/_vsnip/VS/LSP/Diff.vim
+098.192  002.436  001.207: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vsnip/session.vim
+098.313  002.657  000.221: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/autoload/vsnip.vim
+098.629  003.091  000.433: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/vim-vsnip/plugin/vsnip.vim
+098.721  000.010  000.010: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/which-key.nvim/plugin/which-key.vim
+098.804  001.706: loading packages
+099.168  000.152  000.152: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/cmp-vsnip/after/plugin/cmp_vsnip.vim
+099.608  000.393  000.393: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/cmp-buffer/after/plugin/cmp_buffer.lua
+099.826  000.166  000.166: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/cmp-cmdline/after/plugin/cmp_cmdline.lua
+107.797  007.896  007.896: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/cmp-latex-symbols/after/plugin/cmp_latex.lua
+108.455  000.545  000.545: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua
+108.768  000.253  000.253: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/cmp-path/after/plugin/cmp_path.lua
+108.949  000.124  000.124: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/start/cmp-spell/after/plugin/cmp-spell.lua
+108.984  000.650: loading after plugins
+108.998  000.014: inits 3
+111.278  002.280: reading ShaDa
+111.796  000.518: opening buffers
+112.016  000.220: BufEnter autocommands
+112.020  000.004: editing files in windows
+124.820  012.800: VimEnter autocommands
+124.828  000.009: UIEnter autocommands
+190.667  065.663  065.663: sourcing /usr/share/nvim/runtime/autoload/provider/clipboard.vim
+190.685  000.193: before starting main loop
+192.054  000.040  000.040: sourcing /home/zhdreamer/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons/plugin/nvim-web-devicons.vim
+198.730  008.005: first screen update
+198.734  000.003: --- NVIM STARTED ---
