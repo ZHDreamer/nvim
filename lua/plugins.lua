@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
     -- ██║     ██║   ██║██████╔╝█████╗
     -- ██║     ██║   ██║██╔══██╗██╔══╝
     -- ╚██████╗╚██████╔╝██║  ██║███████╗
-    -- ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+    --  ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
     -- Plugin manager
     use('wbthomason/packer.nvim')
@@ -98,7 +98,6 @@ return require('packer').startup(function(use)
     -- Persist buffer
     use {
         'olimorris/persisted.nvim',
-        -- module = 'persisted',
         config = function()
             require('basic.persisted')
         end,
@@ -232,7 +231,7 @@ return require('packer').startup(function(use)
             )
             vim.keymap.set('', 'h', '<cmd>HopWord<cr>')
             vim.keymap.set('', 'H', '<cmd>HopLineStart<cr>')
-            vim.keymap.set('', '\\', '<cmd>lua require"hop".hint_patterns({ case_insensitive = false, })<cr>')
+            vim.keymap.set('', '\\', '<cmd>lua require"hop".hint_patterns({ case_insensitive = false })<cr>')
         end,
         config = function()
             require('editing.hop')
@@ -543,11 +542,11 @@ return require('packer').startup(function(use)
         end,
     }
 
-    use {
-        'sbdchd/neoformat',
-        events = { 'BufWrite' },
-        config = function()
-            require('lsp.formatter')
-        end,
-    }
+    -- use {
+    --     'sbdchd/neoformat',
+    --     events = { 'BufWrite' },
+    --     config = function()
+    --         require('lsp.formatter')
+    --     end,
+    -- }
 end)

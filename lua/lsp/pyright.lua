@@ -1,7 +1,7 @@
 return {
-    filetypes = { "python" },
+    filetypes = { 'python' },
     single_file_support = true,
-    cmd = { "pyright-langserver", "--stdio" },
+    -- cmd = { "pyright-langserver", "--stdio" },
     ---@diagnostic disable-next-line: deprecated
     -- root_dir = util.root_pattern(unpack(root_files)),
     handlers = {
@@ -21,28 +21,28 @@ return {
     settings = {
         python = {
             analysis = {
-                typeCheckingMode = "basic", -- off, basic, strict
+                typeCheckingMode = 'basic', -- off, basic, strict
                 useLibraryCodeForTypes = true,
                 autoImportCompletions = true,
-                diagnosticMode = "workspace",
+                diagnosticMode = 'workspace',
                 -- https://github.com/microsoft/pyright/blob/main/docs/configuration.md#type-check-diagnostics-settings
                 diagnosticSeverityOverrides = {
                     strictListInference = true,
                     strictDictionaryInference = true,
                     strictSetInference = true,
-                    reportUnusedImport = "warning",
-                    reportUnusedClass = "warning",
-                    reportUnusedFunction = "warning",
-                    reportUnusedVariable = "warning",
-                    reportUnusedCoroutine = "warning",
-                    reportDuplicateImport = "warning",
-                    reportPrivateUsage = "warning",
-                    reportUnusedExpression = "warning",
-                    reportConstantRedefinition = "error",
-                    reportIncompatibleMethodOverride = "error",
-                    reportMissingImports = "error",
-                    reportUndefinedVariable = "error",
-                    reportAssertAlwaysTrue = "error",
+                    reportUnusedImport = 'warning',
+                    reportUnusedClass = 'warning',
+                    reportUnusedFunction = 'warning',
+                    reportUnusedVariable = 'warning',
+                    reportUnusedCoroutine = 'warning',
+                    reportDuplicateImport = 'warning',
+                    reportPrivateUsage = 'warning',
+                    reportUnusedExpression = 'warning',
+                    reportConstantRedefinition = 'error',
+                    reportIncompatibleMethodOverride = 'error',
+                    reportMissingImports = 'error',
+                    reportUndefinedVariable = 'error',
+                    reportAssertAlwaysTrue = 'error',
                 },
             },
         },

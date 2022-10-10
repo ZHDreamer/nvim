@@ -1,3 +1,3 @@
-require('hop').setup{
-  keys = 'seritnaofuwydhvmplgjbkcxzq',
+require('hop').setup {
+    -- keys = 'seritnaofuwydhvmplgjbkcxzq',
 }

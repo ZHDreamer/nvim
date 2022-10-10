@@ -10,18 +10,18 @@ local register_key = function(bufnr)
     vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, opts)
     -- vim.keymap.set('n', '<space>d', '<cmd>lua vim.diagnostic.open_float({ border = "single" })<cr>', opts)
     vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
-    vim.keymap.set('n', 'H', '<cmd>lua vim.lsp.buf.hover(opts = { border = "single" })<cr>', opts)
+    -- vim.keymap.set('n', '<space>', '<cmd>lua vim.lsp.buf.hover(opts = { border = "single" })<cr>', opts)
     -- vim.keymap.set('n', 'H', vim.lsp.buf.hover, opts)
 end
 
-vim.diagnostic.config({
+vim.diagnostic.config {
     signs = true,
     underline = true,
     severity_sort = true,
     update_in_insert = true,
     float = { source = 'always', border = 'single' },
     virtual_text = { prefix = '●', source = 'if_many' },
-})
+}
 
 local signs = {
     Error = ' ',
