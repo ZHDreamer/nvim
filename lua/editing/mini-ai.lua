@@ -1,33 +1,33 @@
 local gen_spec = require('mini.ai').gen_spec
 
-require('mini.ai').setup({
+require('mini.ai').setup {
     -- Table with textobject id as fields, textobject specification as values.
     -- Also use this to disable builtin textobjects. See |MiniAi.config|.
     custom_textobjects = {
         ['b'] = { { '%b()', '%b[]', '%b{}' }, '^.%s*().-()%s*.$' },
         -- ['a'] = gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.outer' }),
-        ['c'] = gen_spec.treesitter({
+        ['c'] = gen_spec.treesitter {
             a = { '@conditional.outer', '@loop.outer' },
             i = { '@conditional.inner', '@loop.inner' },
-        }),
+        },
         -- ['c'] = gen_spec.treesitter({
         --     a = '@conditional.outer',
         --     i = '@conditional.inner',
         -- }),
-        ['f'] = gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
+        ['f'] = gen_spec.treesitter { a = '@function.outer', i = '@function.inner' },
     },
 
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
         -- Main textobject prefixes
         around = 'a',
-        inside = 'k',
+        inside = 'l',
 
         -- Next/last variants
         around_next = 'an',
-        inside_next = 'kn',
+        inside_next = 'ln',
         around_last = 'al',
-        inside_last = 'kl',
+        inside_last = 'll',
 
         -- Move cursor to corresponding edge of `a` textobject
         goto_left = 'g[',
@@ -41,4 +41,4 @@ require('mini.ai').setup({
     -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
     -- 'cover_or_nearest', 'next', 'previous', 'nearest'.
     search_method = 'cover_or_next',
-})
+}

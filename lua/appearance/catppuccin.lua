@@ -3,12 +3,12 @@
 vim.g.catppuccin_flavour = 'mocha'
 local colors = require('catppuccin.palettes').get_palette()
 
-require('catppuccin').setup({
+require('catppuccin').setup {
     transparent_background = false,
     term_colors = false,
     compile = {
         enabled = false,
-        path = vim.fn.stdpath 'cache' .. '/catppuccin',
+        path = vim.fn.stdpath('cache') .. '/catppuccin',
     },
     dim_inactive = {
         enabled = false,
@@ -27,7 +27,7 @@ require('catppuccin').setup({
         booleans = {},
         properties = {},
         types = {},
-        operators = {}
+        operators = {},
     },
     integrations = {
         treesitter = true,
@@ -80,11 +80,10 @@ require('catppuccin').setup({
     },
     color_overrides = {},
     custom_highlights = {
-        NormalFloat = { bg = colors.base },     -- set the floating window bg
+        NormalFloat = { bg = colors.base }, -- set the floating window bg
         gitBranch = { fg = '#F3F99D' },
-        diffAdded = { fg = colors.green },        -- diff mode: Added line |diff.txt|
-        diffChanged = { fg = colors.blue },    -- diff mode: Changed line |diff.txt|
-        diffRemoved = { fg = colors.red },       -- diff mode: Deleted line |diff.txt|
+        diffAdded = { fg = colors.green }, -- diff mode: Added line |diff.txt|
+        diffChanged = { fg = colors.blue }, -- diff mode: Changed line |diff.txt|
+        diffRemoved = { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
     },
-})
-
+}

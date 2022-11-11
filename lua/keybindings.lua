@@ -3,39 +3,52 @@ vim.keymap.set('', '<space>', '<nop>')
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- curser movement for colemak
-vim.keymap.set('', 'n', 'h') -- left
+vim.keymap.set('', 'h', 'h') -- left
 vim.keymap.set('', 'i', 'l') -- right
-vim.keymap.set('n', 'u', 'gk') -- up
-vim.keymap.set('n', 'e', 'gj') -- down
-vim.keymap.set({ 'v', 'o' }, 'u', 'k') -- up
-vim.keymap.set({ 'v', 'o' }, 'e', 'j') -- down
-vim.keymap.set('', 'N', '^')
+if vim.g.vscode then
+    vim.keymap.set(
+        'n',
+        'e',
+        '<cmd>call VSCodeNotify("cursorMove", { "to": "up", "by": "wrappedLine", "value": v:count ? v:count : 1 })<CR>'
+    ) -- up
+    vim.keymap.set(
+        'n',
+        'n',
+        '<cmd>call VSCodeNotify("cursorMove", { "to": "down", "by": "wrappedLine", "value": v:count ? v:count : 1 })<CR>'
+    ) -- down
+else
+    vim.keymap.set('n', 'e', 'gk') -- up
+    vim.keymap.set('n', 'n', 'gj') -- down
+end
+vim.keymap.set({ 'v', 'o' }, 'e', 'k') -- up
+vim.keymap.set({ 'v', 'o' }, 'n', 'j') -- down
+vim.keymap.set('', 'H', '^')
 vim.keymap.set('', 'I', '$')
-vim.keymap.set('n', 'U', '5gk')
-vim.keymap.set('n', 'E', '5gj')
-vim.keymap.set({ 'v', 'o' }, 'U', '5k') -- up
-vim.keymap.set({ 'v', 'o' }, 'E', '5j') -- down
+vim.keymap.set('n', 'E', '5e', { remap = true })
+vim.keymap.set('n', 'N', '5n', { remap = true })
+vim.keymap.set({ 'v', 'o' }, 'E', '5k') -- up
+vim.keymap.set({ 'v', 'o' }, 'N', '5j') -- down
 
-vim.keymap.set('', 'k', 'i') -- k for insert
-vim.keymap.set('', 'K', 'I')
-vim.keymap.set('n', 'gk', 'gi')
-vim.keymap.set('n', 'l', 'u') -- l for undo
+vim.keymap.set('', 'l', 'i') -- k for insert
+vim.keymap.set('', 'L', 'I')
+vim.keymap.set('n', 'gl', 'gi')
+-- vim.keymap.set('n', 'l', 'u') -- l for undo
 
 -- Split windows
 vim.keymap.set('n', '<leader>h', ':split<CR>')
 vim.keymap.set('n', '<leader>v', ':vsplit<CR>')
 
 -- Window navigation
-vim.keymap.set('n', '<A-n>', '<C-w>h')
+vim.keymap.set('n', '<A-h>', '<C-w>h')
 vim.keymap.set('n', '<A-i>', '<C-w>l')
-vim.keymap.set('n', '<A-u>', '<C-w>k')
-vim.keymap.set('n', '<A-e>', '<C-w>j')
+vim.keymap.set('n', '<A-e>', '<C-w>k')
+vim.keymap.set('n', '<A-n>', '<C-w>j')
 
 -- Window resize
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
-vim.keymap.set("n", "<C-Up>", ":resize -2<CR>")
-vim.keymap.set("n", "<C-Down>", ":resize +2<CR>")
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
+vim.keymap.set('n', '<C-Up>', ':resize -2<CR>')
+vim.keymap.set('n', '<C-Down>', ':resize +2<CR>')
 
 -- Search
 vim.keymap.set('n', 'J', 'Nzz') -- previous search item
@@ -49,19 +62,19 @@ vim.keymap.set('v', '.', ':normal! .<CR>')
 -- Custom operator-pending key
 --
 -- tex $ support
-vim.keymap.set('o', 'ko', ':<C-u>normal! T$vt$<CR>')
+vim.keymap.set('o', 'lo', ':<C-u>normal! T$vt$<CR>')
 vim.keymap.set('o', 'ao', ':<C-u>normal! F$vf$<CR>')
-vim.keymap.set('v', 'ko', 'T$ot$')
+vim.keymap.set('v', 'lo', 'T$ot$')
 vim.keymap.set('v', 'ao', 'F$of$')
 
-vim.keymap.set({ 'v', 'o' }, 'ke', 'i(')
+vim.keymap.set({ 'v', 'o' }, 'le', 'i(')
 vim.keymap.set({ 'v', 'o' }, 'ae', 'a(')
-vim.keymap.set({ 'v', 'o' }, 'ku', 'i{')
+vim.keymap.set({ 'v', 'o' }, 'lu', 'i{')
 vim.keymap.set({ 'v', 'o' }, 'au', 'a{')
-vim.keymap.set({ 'v', 'o' }, 'k,', 'i[')
+vim.keymap.set({ 'v', 'o' }, 'l,', 'i[')
 vim.keymap.set({ 'v', 'o' }, 'a,', 'a[')
-vim.keymap.set({ 'v', 'o' }, 'kw', 'iw')
-vim.keymap.set({ 'v', 'o' }, 'kW', 'iW')
+vim.keymap.set({ 'v', 'o' }, 'lw', 'iw')
+vim.keymap.set({ 'v', 'o' }, 'lW', 'iW')
 
 -- tabs
 -- vim.keymap.set('n', '<leader>t', '<cmd>tabnew<CR>') -- creat new tab
@@ -89,6 +102,10 @@ vim.keymap.set({ 'v', 'o' }, 'kW', 'iW')
 -- vim.keymap.set('i', '<Tab>', '<C-r>=AutoTab()<CR>')
 
 -- Indent
-vim.keymap.set('v','<','<gv')
-vim.keymap.set('v','>','>gv')
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
 
+-- VSCode
+if vim.g.vscode then
+    vim.keymap.set({ 'n', 'i' }, '<c-p>', '<cmd>call VSCodeNotify("editor.action.triggerParameterHints")<cr>')
+end

@@ -21,8 +21,7 @@ local lspkind = require('lspkind')
 
 local cmp = require('cmp')
 
-cmp.setup---@diagnostic disable-next-line: redundant-parameter
- {
+cmp.setup {
     -- 指定补全引擎
     snippet = {
         expand = function(args)
@@ -36,7 +35,7 @@ cmp.setup---@diagnostic disable-next-line: redundant-parameter
         { name = 'nvim_lsp' },
         { name = 'path' },
         { name = 'buffer' },
-        { name = 'cmdline' },
+        -- { name = 'cmdline' },
         { name = 'spell' },
         -- {name = "cmp_tabnine"},
     }, {

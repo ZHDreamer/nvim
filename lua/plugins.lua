@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
     -- Language support manager
     use {
         'williamboman/mason.nvim',
+        cond = 'not vim.g.vscode',
         after = { 'nvim-notify' },
         setup = function()
             vim.keymap.set('n', '<leader>m', '<cmd>Mason<cr>')
@@ -64,6 +65,7 @@ return require('packer').startup(function(use)
     -- Mason support for neovim lsp
     use {
         'williamboman/mason-lspconfig.nvim',
+        cond = 'not vim.g.vscode',
         after = { 'mason.nvim' },
         config = function()
             require('mason-lspconfig').setup {
@@ -75,6 +77,7 @@ return require('packer').startup(function(use)
     -- Neovim native lsp
     use {
         'neovim/nvim-lspconfig',
+        cond = 'not vim.g.vscode',
         after = { 'mason-lspconfig.nvim' },
         config = function()
             require('core.lspconfig')
@@ -83,6 +86,7 @@ return require('packer').startup(function(use)
 
     use {
         'jose-elias-alvarez/null-ls.nvim',
+        cond = 'not vim.g.vscode',
         config = function()
             require('core.null-ls')
         end,
@@ -98,6 +102,7 @@ return require('packer').startup(function(use)
     -- Persist buffer
     use {
         'olimorris/persisted.nvim',
+        cond = 'not vim.g.vscode',
         config = function()
             require('basic.persisted')
         end,
@@ -150,6 +155,7 @@ return require('packer').startup(function(use)
     -- Autopairs
     use {
         'windwp/nvim-autopairs',
+        cond = 'not vim.g.vscode',
         event = { 'InsertEnter' },
         config = function()
             require('editing.nvim-autopairs')
@@ -171,6 +177,7 @@ return require('packer').startup(function(use)
     -- comment
     use {
         'numToStr/Comment.nvim',
+        cond = 'not vim.g.vscode',
         events = { 'BufferEnter' },
         config = function()
             require('editing.nvim-comment')
@@ -209,28 +216,28 @@ return require('packer').startup(function(use)
         'phaazon/hop.nvim',
         setup = function()
             -- place this in one of your configuration file(s)
-            vim.keymap.set(
-                '',
-                'f',
-                "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
-            )
-            vim.keymap.set(
-                '',
-                'F',
-                "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
-            )
-            vim.keymap.set(
-                '',
-                't',
-                "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
-            )
-            vim.keymap.set(
-                '',
-                'T',
-                "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>"
-            )
-            vim.keymap.set('', 'h', '<cmd>HopWord<cr>')
-            vim.keymap.set('', 'H', '<cmd>HopLineStart<cr>')
+            -- vim.keymap.set(
+            --     '',
+            --     'f',
+            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
+            -- )
+            -- vim.keymap.set(
+            --     '',
+            --     'F',
+            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
+            -- )
+            -- vim.keymap.set(
+            --     '',
+            --     't',
+            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
+            -- )
+            -- vim.keymap.set(
+            --     '',
+            --     'T',
+            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>"
+            -- )
+            vim.keymap.set('', 'k', '<cmd>HopWord<cr>')
+            vim.keymap.set('', 'K', '<cmd>HopLineStart<cr>')
             vim.keymap.set('', '\\', '<cmd>lua require"hop".hint_patterns({ case_insensitive = false })<cr>')
         end,
         config = function()
@@ -249,6 +256,7 @@ return require('packer').startup(function(use)
     -- Markdown PicGo
     use {
         'askfiy/nvim-picgo',
+        cond = 'not vim.g.vscode',
         ft = { 'markdown' },
         config = function()
             -- it doesn't require you to do any configuration
@@ -259,6 +267,7 @@ return require('packer').startup(function(use)
     -- Markdown Preview
     use {
         'iamcco/markdown-preview.nvim',
+        cond = 'not vim.g.vscode',
         ft = { 'markdown' },
         run = function()
             vim.fn['mkdp#util#install']()
@@ -293,6 +302,7 @@ return require('packer').startup(function(use)
             ]])
         end,
     }
+
     use {
         'connorholyday/vim-snazzy',
     }
@@ -300,6 +310,7 @@ return require('packer').startup(function(use)
     -- Notification
     use {
         'rcarriga/nvim-notify',
+        cond = 'not vim.g.vscode',
         config = function()
             require('appearance.nvim-notify')
         end,
@@ -308,6 +319,7 @@ return require('packer').startup(function(use)
     -- Status line
     use {
         'windwp/windline.nvim',
+        cond = 'not vim.g.vscode',
         disable = true,
         config = function()
             require('appearance.windline')
@@ -315,6 +327,7 @@ return require('packer').startup(function(use)
     }
     use {
         'rebelot/heirline.nvim',
+        cond = 'not vim.g.vscode',
         disable = false,
         after = { 'catppuccin', 'nvim-lspconfig' },
         config = function()
@@ -325,9 +338,11 @@ return require('packer').startup(function(use)
     -- Bufferline
     use {
         'akinsho/bufferline.nvim',
+        -- cond = 'not vim.g.vscode',
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
+        after = { 'catppuccin' },
         config = function()
             require('appearance.bufferline')
         end,
@@ -336,6 +351,7 @@ return require('packer').startup(function(use)
     -- File explorer
     use {
         'kyazdani42/nvim-tree.lua',
+        cond = 'not vim.g.vscode',
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
@@ -351,6 +367,7 @@ return require('packer').startup(function(use)
     -- Which key
     use {
         'folke/which-key.nvim',
+        cond = 'not vim.g.vscode',
         events = { 'BufRead', 'BufNewFile' },
         config = function()
             require('appearance.which-key')
@@ -361,6 +378,7 @@ return require('packer').startup(function(use)
     use {
 
         'lewis6991/gitsigns.nvim',
+        cond = 'not vim.g.vscode',
         requires = {
             'nvim-lua/plenary.nvim',
         },
@@ -403,6 +421,7 @@ return require('packer').startup(function(use)
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
+        cond = 'not vim.g.vscode',
         requires = {
             'nvim-lua/plenary.nvim', -- Lua 开发模块
             'BurntSushi/ripgrep', -- 文字查找
@@ -447,6 +466,7 @@ return require('packer').startup(function(use)
     -- Color highlighter for hexrgb and termcolor
     use {
         'norcalli/nvim-colorizer.lua',
+        cond = 'not vim.g.vscode',
         events = { 'BufEnter' },
         config = function()
             require('highlight.nvim-colorizer')
@@ -456,6 +476,7 @@ return require('packer').startup(function(use)
     -- Brackets highlighter
     use {
         'luochen1990/rainbow',
+        cond = 'not vim.g.vscode',
         events = { 'BufEnter' },
         config = function()
             require('highlight.rainbow')
@@ -465,6 +486,7 @@ return require('packer').startup(function(use)
     -- Indent line
     use {
         'lukas-reineke/indent-blankline.nvim',
+        cond = 'not vim.g.vscode',
         events = { 'BufEnter' },
         config = function()
             require('highlight.indent-blankline')
@@ -474,6 +496,7 @@ return require('packer').startup(function(use)
     -- Syntax highlighter
     use {
         'nvim-treesitter/nvim-treesitter',
+        -- cond = 'not vim.g.vscode',
         run = ':TSUpdate',
         events = { 'BufEnter' },
         config = function()
@@ -484,6 +507,8 @@ return require('packer').startup(function(use)
     -- Argument highlighter
     use {
         'm-demare/hlargs.nvim',
+        disable = true,
+        cond = 'not vim.g.vscode',
         requires = { 'nvim-treesitter/nvim-treesitter' },
         events = { 'BufEnter' },
         config = function()
@@ -508,6 +533,7 @@ return require('packer').startup(function(use)
 
     use {
         'j-hui/fidget.nvim',
+        cond = 'not vim.g.vscode',
         after = { 'nvim-lspconfig' },
         config = function()
             require('fidget').setup {}
@@ -516,6 +542,7 @@ return require('packer').startup(function(use)
 
     use {
         'preservim/vim-markdown',
+        cond = 'not vim.g.vscode',
         config = function() end,
     }
 
@@ -527,6 +554,7 @@ return require('packer').startup(function(use)
     --  ╚═════╝╚═╝     ╚═╝╚═╝
     use {
         'hrsh7th/nvim-cmp', -- 代码补全核心插件，下面都是增强补全的体验插件
+        disable = false,
         events = { 'InsertEnter' },
         requires = {
             { 'onsails/lspkind-nvim' }, -- 为补全添加类似 vscode 的图标
