@@ -158,15 +158,19 @@ local FileName = {
     end,
     hl = { fg = utils.get_highlight('Directory').fg },
 
-    utils.make_flexible_component(2, {
-        provider = function(self)
-            return self.lfilename
-        end,
-    }, {
-        provider = function(self)
-            return vim.fn.pathshorten(self.lfilename)
-        end,
-    }),
+    {
+        flexible = 2,
+        {
+            provider = function(self)
+                return self.lfilename
+            end,
+        },
+        {
+            provider = function(self)
+                return vim.fn.pathshorten(self.lfilename)
+            end,
+        },
+    },
 }
 
 local FileFlags = {
@@ -297,10 +301,10 @@ local LSPActive = {
 local Diagnostics = {
     condition = conditions.lsp_attached,
     static = {
-        error_icon = vim.fn.sign_getdefined('DiagnosticSignError')[1].text,
-        warn_icon = vim.fn.sign_getdefined('DiagnosticSignWarn')[1].text,
-        info_icon = vim.fn.sign_getdefined('DiagnosticSignInfo')[1].text,
-        hint_icon = vim.fn.sign_getdefined('DiagnosticSignHint')[1].text,
+        error_icon = ' ',
+        warn_icon = ' ',
+        info_icon = ' ',
+        hint_icon = ' ',
     },
 
     init = function(self)
