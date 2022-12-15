@@ -16,10 +16,14 @@ vim.cmd([[
 ]])
 vim.opt.signcolumn = 'yes:1'
 vim.opt.fillchars = 'eob: ' -- remove the ugly ~ at end of buffer
-vim.opt.cursorline = true -- show cursor line
 vim.opt.wrap = true -- auto wrap long line
 vim.opt.scrolloff = 10 -- keep n lines on scroll vertical
 
+vim.opt.cursorline = true -- show cursor line
+vim.cmd([[
+    set guicursor=n-v-ve:block,i-c-ci-cr:ver2,r-o:hor2
+]])
+vim.cmd([[autocmd VimLeave * set guicursor=a:ver2-blinkon500]])
 -- show tab and trail space
 vim.opt.list = true
 vim.opt.listchars:append('trail:⋅')
