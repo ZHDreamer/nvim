@@ -1,4 +1,4 @@
-require("Comment").setup({
+require('Comment').setup {
     -- Add a space b/w comment and the line
     -- @type boolean|fun():boolean
     padding = true,
@@ -18,7 +18,7 @@ require("Comment").setup({
     -- @type table
     toggler = {
         -- Line-comment toggle keymap
-        line = '<C-_>',
+        line = 'C',
         -- Block-comment toggle keymap
         block = 'gbc',
     },
@@ -27,7 +27,7 @@ require("Comment").setup({
     -- @type table
     opleader = {
         -- Line-comment keymap
-        line = '<C-_>',
+        line = 'gc',
         -- Block-comment keymap
         block = 'gb',
     },
@@ -66,4 +66,4 @@ require("Comment").setup({
     -- Post-hook, called after commenting is done
     -- @type nil|fun(ctx: CommentCtx)
     post_hook = nil,
-})
+}

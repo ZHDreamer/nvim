@@ -4,8 +4,8 @@ require('mini.ai').setup {
     -- Table with textobject id as fields, textobject specification as values.
     -- Also use this to disable builtin textobjects. See |MiniAi.config|.
     custom_textobjects = {
-        ['b'] = { { '%b()', '%b[]', '%b{}' }, '^.%s*().-()%s*.$' },
-        -- ['a'] = gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.outer' }),
+        ['e'] = { { '%b()', '%b[]', '%b{}' }, '^.%s*().-()%s*.$' },
+        ['a'] = gen_spec.treesitter { a = '@parameter.outer', i = '@parameter.outer' },
         ['c'] = gen_spec.treesitter {
             a = { '@conditional.outer', '@loop.outer' },
             i = { '@conditional.inner', '@loop.inner' },
@@ -21,17 +21,17 @@ require('mini.ai').setup {
     mappings = {
         -- Main textobject prefixes
         around = 'a',
-        inside = 'l',
+        inside = 't',
 
         -- Next/last variants
         around_next = 'an',
-        inside_next = 'ln',
+        inside_next = 'tn',
         around_last = 'al',
-        inside_last = 'll',
+        inside_last = 'tl',
 
         -- Move cursor to corresponding edge of `a` textobject
-        goto_left = 'g[',
-        goto_right = 'g]',
+        goto_left = 'gn',
+        goto_right = 'gi',
     },
 
     -- Number of lines within which textobject is searched

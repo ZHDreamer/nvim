@@ -2,12 +2,13 @@ local conditions = require('heirline.conditions')
 local utils = require('heirline.utils')
 
 local function setup_colors()
+    local mocha = require('catppuccin.palettes').get_palette('mocha')
     return {
         bg = utils.get_highlight('StatusLine').bg,
         fg = utils.get_highlight('StatusLine').fg,
         bright_bg = utils.get_highlight('Folded').bg,
         bright_fg = utils.get_highlight('Folded').fg,
-        red = utils.get_highlight('DiagnosticError').fg,
+        red = mocha['red'],
         dark_red = utils.get_highlight('DiffDelete').bg,
         green = utils.get_highlight('String').fg,
         blue = utils.get_highlight('Function').fg,
@@ -25,8 +26,6 @@ local function setup_colors()
         git_change = utils.get_highlight('diffChanged').fg,
     }
 end
-
-require('heirline').load_colors(setup_colors())
 
 local Align = { provider = '%=' }
 local Space = { provider = ' ' }
@@ -290,7 +289,7 @@ local LSPActive = {
 
     provider = function()
         local names = {}
-        for _, server in pairs(vim.lsp.buf_get_clients(0)) do
+        for i, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
             table.insert(names, server.name)
         end
         return ' [' .. table.concat(names, ' ') .. ']'
@@ -422,12 +421,11 @@ local StatusLines = {
     DefaultStatusline,
 }
 
-require('heirline').setup(StatusLines)
+require('heirline').setup { statusline = StatusLines }
+
+require('heirline').load_colors(setup_colors())
 
 vim.api.nvim_create_augroup('Heirline', { clear = true })
-
-vim.cmd([[au Heirline FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]])
-
 vim.api.nvim_create_autocmd('ColorScheme', {
     callback = function()
         local colors = setup_colors()

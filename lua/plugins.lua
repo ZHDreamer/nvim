@@ -153,21 +153,21 @@ return require('packer').startup(function(use)
     -- ╚══════╝╚═════╝ ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝
 
     -- Autopairs
-    use {
-        'windwp/nvim-autopairs',
-        cond = 'not vim.g.vscode',
-        event = { 'InsertEnter' },
-        config = function()
-            require('editing.nvim-autopairs')
-        end,
-    }
+    -- use {
+    --     'windwp/nvim-autopairs',
+    --     cond = 'not vim.g.vscode',
+    --     event = { 'InsertEnter' },
+    --     config = function()
+    --         require('editing.nvim-autopairs')
+    --     end,
+    -- }
 
     -- Switch words
     use {
         'AndrewRadev/switch.vim',
         events = { 'BufferEnter' },
         setup = function()
-            vim.keymap.set('n', 'S', '<cmd>Switch<cr>')
+            vim.keymap.set('n', 'F', '<cmd>Switch<cr>')
         end,
         config = function()
             require('editing.switch')
@@ -177,7 +177,7 @@ return require('packer').startup(function(use)
     -- comment
     use {
         'numToStr/Comment.nvim',
-        cond = 'not vim.g.vscode',
+        -- cond = 'not vim.g.vscode',
         events = { 'BufferEnter' },
         config = function()
             require('editing.nvim-comment')
@@ -185,10 +185,10 @@ return require('packer').startup(function(use)
     }
 
     -- surround
-    use {
-        'tpope/vim-surround',
-        events = { 'BufRead', 'BufNewFile' },
-    }
+    -- use {
+    --     'tpope/vim-surround',
+    --     events = { 'BufRead', 'BufNewFile' },
+    -- }
     -- use {
     --     'ur4ltz/surround.nvim',
     --     config = function()
@@ -212,38 +212,64 @@ return require('packer').startup(function(use)
     }
 
     -- Motion
+    -- use {
+    --     'phaazon/hop.nvim',
+    --     setup = function()
+    --         -- place this in one of your configuration file(s)
+    --         -- vim.keymap.set(
+    --         --     '',
+    --         --     'f',
+    --         --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
+    --         -- )
+    --         -- vim.keymap.set(
+    --         --     '',
+    --         --     'F',
+    --         --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
+    --         -- )
+    --         -- vim.keymap.set(
+    --         --     '',
+    --         --     't',
+    --         --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
+    --         -- )
+    --         -- vim.keymap.set(
+    --         --     '',
+    --         --     'T',
+    --         --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>"
+    --         -- )
+    --         vim.keymap.set('', 'k', '<cmd>HopWord<cr>')
+    --         vim.keymap.set('', 'K', '<cmd>HopLineStart<cr>')
+    --         vim.keymap.set('', '\\', '<cmd>lua require"hop".hint_patterns({ case_insensitive = false })<cr>')
+    --     end,
+    --     config = function()
+    --         require('editing.hop')
+    --     end,
+    -- }
     use {
-        'phaazon/hop.nvim',
-        setup = function()
-            -- place this in one of your configuration file(s)
-            -- vim.keymap.set(
-            --     '',
-            --     'f',
-            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
-            -- )
-            -- vim.keymap.set(
-            --     '',
-            --     'F',
-            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
-            -- )
-            -- vim.keymap.set(
-            --     '',
-            --     't',
-            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
-            -- )
-            -- vim.keymap.set(
-            --     '',
-            --     'T',
-            --     "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>"
-            -- )
-            vim.keymap.set('', 'k', '<cmd>HopWord<cr>')
-            vim.keymap.set('', 'K', '<cmd>HopLineStart<cr>')
-            vim.keymap.set('', '\\', '<cmd>lua require"hop".hint_patterns({ case_insensitive = false })<cr>')
-        end,
+        'ggandor/leap.nvim',
+        require = {
+            'tpope/vim-repeat',
+        },
         config = function()
-            require('editing.hop')
+            require('editing.leap')
         end,
     }
+    -- use {
+    --     'ggandor/flit.nvim',
+    --     require = {
+    --         'ggandor/leap.nvim',
+    --     },
+    --     config = function()
+    --         require('flit').setup {
+    --             keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+    --             -- A string like "nv", "nvo", "o", etc.
+    --             labeled_modes = 'v',
+    --             multiline = true,
+    --             -- Like `leap`s similar argument (call-specific overrides).
+    --             -- E.g.: opts = { equivalence_classes = {} }
+    --             opts = {},
+    --         }
+    --     end,
+    -- }
 
     -- Align
     use {
@@ -338,7 +364,7 @@ return require('packer').startup(function(use)
     -- Bufferline
     use {
         'akinsho/bufferline.nvim',
-        -- cond = 'not vim.g.vscode',
+        cond = 'not vim.g.vscode',
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
@@ -552,28 +578,28 @@ return require('packer').startup(function(use)
     -- ██║     ██║╚██╔╝██║██╔═══╝
     -- ╚██████╗██║ ╚═╝ ██║██║
     --  ╚═════╝╚═╝     ╚═╝╚═╝
-    use {
-        'hrsh7th/nvim-cmp', -- 代码补全核心插件，下面都是增强补全的体验插件
-        disable = false,
-        events = { 'InsertEnter' },
-        requires = {
-            { 'onsails/lspkind-nvim' }, -- 为补全添加类似 vscode 的图标
-            { 'hrsh7th/vim-vsnip' }, -- vsnip 引擎，用于获得代码片段支持
-            { 'hrsh7th/cmp-vsnip' }, -- 适用于 vsnip 的代码片段源
-            { 'hrsh7th/cmp-nvim-lsp' }, -- 替换内置 omnifunc，获得更多补全
-            { 'hrsh7th/cmp-path' }, -- 路径补全
-            { 'hrsh7th/cmp-buffer' }, -- 缓冲区补全
-            { 'hrsh7th/cmp-cmdline' }, -- 命令补全
-            { 'f3fora/cmp-spell' }, -- 拼写建议
-            { 'rafamadriz/friendly-snippets' }, -- 提供多种语言的代码片段
-            { 'lukas-reineke/cmp-under-comparator' }, -- 让补全结果的排序更加智能
-            { 'kdheepak/cmp-latex-symbols' },
-            -- {'tzachar/cmp-tabnine', run = './install.sh'} -- tabnine 源,提供基于 AI 的智能补全
-        },
-        config = function()
-            require('cmp.nvim-cmp')
-        end,
-    }
+    -- use {
+    --     'hrsh7th/nvim-cmp', -- 代码补全核心插件，下面都是增强补全的体验插件
+    --     disable = false,
+    --     events = { 'InsertEnter' },
+    --     requires = {
+    --         { 'onsails/lspkind-nvim' }, -- 为补全添加类似 vscode 的图标
+    --         { 'hrsh7th/vim-vsnip' }, -- vsnip 引擎，用于获得代码片段支持
+    --         { 'hrsh7th/cmp-vsnip' }, -- 适用于 vsnip 的代码片段源
+    --         { 'hrsh7th/cmp-nvim-lsp' }, -- 替换内置 omnifunc，获得更多补全
+    --         { 'hrsh7th/cmp-path' }, -- 路径补全
+    --         { 'hrsh7th/cmp-buffer' }, -- 缓冲区补全
+    --         { 'hrsh7th/cmp-cmdline' }, -- 命令补全
+    --         { 'f3fora/cmp-spell' }, -- 拼写建议
+    --         { 'rafamadriz/friendly-snippets' }, -- 提供多种语言的代码片段
+    --         { 'lukas-reineke/cmp-under-comparator' }, -- 让补全结果的排序更加智能
+    --         { 'kdheepak/cmp-latex-symbols' },
+    --         -- {'tzachar/cmp-tabnine', run = './install.sh'} -- tabnine 源,提供基于 AI 的智能补全
+    --     },
+    --     config = function()
+    --         require('cmp.nvim-cmp')
+    --     end,
+    -- }
 
     -- use {
     --     'sbdchd/neoformat',
