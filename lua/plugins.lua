@@ -177,7 +177,7 @@ return require('packer').startup(function(use)
     -- comment
     use {
         'numToStr/Comment.nvim',
-        -- cond = 'not vim.g.vscode',
+        cond = 'not vim.g.vscode',
         events = { 'BufferEnter' },
         config = function()
             require('editing.nvim-comment')
@@ -204,7 +204,7 @@ return require('packer').startup(function(use)
         after = { 'nvim-treesitter' },
     }
     use {
-        'echasnovski/mini.nvim',
+        'echasnovski/mini.ai',
         after = { 'nvim-treesitter' },
         config = function()
             require('editing.mini-ai')

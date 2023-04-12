@@ -101,3 +101,7 @@ local disable_builtin_plugins = {
 for _, builtin_plugin in ipairs(disable_builtin_plugins) do
     vim.g['loaded_' .. builtin_plugin] = 1
 end
+
+if vim.g.vscode then
+    vim.g.loaded_matchparen = 0
+end

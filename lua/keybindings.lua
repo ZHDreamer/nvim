@@ -5,21 +5,8 @@ vim.g.maplocalleader = ' '
 -- curser movement for colemak
 vim.keymap.set('', 'n', 'h') -- left
 vim.keymap.set('', 'i', 'l') -- right
-if vim.g.vscode then
-    vim.keymap.set(
-        'n',
-        'u',
-        '<cmd>call VSCodeNotify("cursorMove", { "to": "up", "by": "wrappedLine", "value": v:count ? v:count : 1 })<CR>'
-    ) -- up
-    vim.keymap.set(
-        'n',
-        'e',
-        '<cmd>call VSCodeNotify("cursorMove", { "to": "down", "by": "wrappedLine", "value": v:count ? v:count : 1 })<CR>'
-    ) -- down
-else
-    vim.keymap.set('n', 'u', 'gk') -- up
-    vim.keymap.set('n', 'e', 'gj') -- down
-end
+vim.keymap.set('n', 'u', 'gk') -- up
+vim.keymap.set('n', 'e', 'gj') -- down
 vim.keymap.set({ 'v', 'o' }, 'u', 'k') -- up
 vim.keymap.set({ 'v', 'o' }, 'e', 'j') -- down
 vim.keymap.set('', 'N', '^')
@@ -30,11 +17,11 @@ vim.keymap.set({ 'v', 'o' }, 'U', '5k') -- up
 vim.keymap.set({ 'v', 'o' }, 'E', '5j') -- down
 
 -- vim.keymap.set('', 'h', 'g')
-vim.keymap.set('', 'hh', 'gg')
-vim.keymap.set('', 'H', 'G')
+-- vim.keymap.set('', 'mm', 'gg')
+-- vim.keymap.set('', 'H', 'G')
 
-vim.keymap.set('', 'm', 'b')
-vim.keymap.set('', 'M', 'B')
+vim.keymap.set('', 'h', 'b')
+vim.keymap.set('', 'H', 'B')
 vim.keymap.set('', '.', 'e')
 vim.keymap.set('', '>', 'E')
 
@@ -52,7 +39,6 @@ vim.keymap.set('', 't', 'a')
 vim.keymap.set('', 'T', 'A')
 
 vim.keymap.set('n', 'gt', 'gi')
--- vim.keymap.set('n', 'l', 'u') -- l for undo
 
 -- visual mode
 vim.keymap.set('', 'w', 'v')
@@ -60,12 +46,14 @@ vim.keymap.set('', 'W', 'V')
 vim.keymap.set('', '<C-w>', '<C-v>')
 
 -- modify
-vim.keymap.set('', 'd', 'u')
-vim.keymap.set('', 'D', '<C-r>')
+vim.keymap.set('n', 'v', 'u')
+vim.keymap.set('n', 'V', '<C-r>')
 
-vim.keymap.set('', 'v', 'd')
+vim.keymap.set('v', 'v', 'u')
+vim.keymap.set('v', 'V', 'U')
 
 vim.keymap.set('', 'f', 'y')
+vim.keymap.set('v', 'p', 'pgvy')
 
 -- Split windows
 vim.keymap.set('n', '<leader>h', ':split<CR>')
@@ -120,8 +108,6 @@ vim.keymap.set({ 'v', 'o' }, 'tW', 'iW')
 -- vim.keymap.set('n', 'R', ':e<CR>')
 -- vim.keymap.set('n', '<C-s>', ':w<CR>')
 
--- vim.keymap.set('n', '<Enter>', 'A<Enter><esc>')
-
 -- vim.cmd([[
 -- function AutoTab()
 --     let line = getline('.')
@@ -137,10 +123,29 @@ vim.keymap.set({ 'v', 'o' }, 'tW', 'iW')
 -- vim.keymap.set('i', '<Tab>', '<C-r>=AutoTab()<CR>')
 
 -- Indent
-vim.keymap.set('v', '<', '<gv')
-vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('n', '<c-t>', '>', { silent = true })
+vim.keymap.set('n', '<c-t><c-t>', '>>', { silent = true })
+vim.keymap.set('v', '<c-t>', '>gv', { silent = true })
+vim.keymap.set('n', '<c-v>', '>', { silent = true })
+vim.keymap.set('n', '<c-v><c-v>', '<<', { silent = true })
+vim.keymap.set('v', '<c-v>', '<gv', { silent = true })
 
--- VSCode
 if vim.g.vscode then
+    vim.keymap.set(
+        'n',
+        'u',
+        '<cmd>call VSCodeNotify("cursorMove", { "to": "up", "by": "wrappedLine", "value": v:count ? v:count : 1 })<cr>'
+    ) -- up
+    vim.keymap.set(
+        'n',
+        'e',
+        '<cmd>call VSCodeNotify("cursorMove", { "to": "down", "by": "wrappedLine", "value": v:count ? v:count : 1 })<cr>'
+    ) -- down
+
+    -- Prameter hints
     vim.keymap.set({ 'n', 'i' }, '<c-p>', '<cmd>call VSCodeNotify("editor.action.triggerParameterHints")<cr>')
+    -- Comment line
+    vim.keymap.set('', 'C', '<cmd>call VSCodeNotifyVisual("editor.action.commentLine", 0)<cr>')
+    -- Go file
+    vim.keymap.set('n', '<leader>ff', '<cmd>call VSCodeNotify("workbench.action.quickOpen")<cr>')
 end

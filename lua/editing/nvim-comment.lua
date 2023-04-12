@@ -27,7 +27,7 @@ require('Comment').setup {
     -- @type table
     opleader = {
         -- Line-comment keymap
-        line = 'gc',
+        line = 'C',
         -- Block-comment keymap
         block = 'gb',
     },
