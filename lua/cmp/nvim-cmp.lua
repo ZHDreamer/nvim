@@ -70,13 +70,13 @@ cmp.setup {
     -- 绑定补全相关的按键
     mapping = {
         -- 上一个
-        ['<C-u>'] = cmp.mapping.select_prev_item(),
+        ['<up>'] = cmp.mapping.select_prev_item(),
         -- 下一个
-        ['<C-e>'] = cmp.mapping.select_next_item(),
+        ['<down>'] = cmp.mapping.select_next_item(),
         -- 选择补全
-        ['<CR>'] = cmp.mapping.confirm { select = false },
+        ['<tab>'] = cmp.mapping.confirm { select = false },
         --  出现或关闭补全
-        ['<C-k>'] = cmp.mapping {
+        ['<C-@>'] = cmp.mapping {
             i = function()
                 if cmp.visible() then
                     cmp.abort()
@@ -92,15 +92,6 @@ cmp.setup {
                 end
             end,
         },
-        -- 类似于 IDEA 的功能，如果没进入选择框，tab
-        -- 会选择下一个，如果进入了选择框，tab 会确认当前选择
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-            else
-                fallback()
-            end
-        end, { 'i', 's', 'c' }),
     },
 }
 

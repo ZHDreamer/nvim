@@ -1,12 +1,12 @@
 -- Remap leader key
--- vim.keymap.set({ 'n', 'v' }, '<space>', '<nop>')
+vim.keymap.set({ 'n', 'v' }, '<space>', '<nop>', { silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- curser movement for colemak
-vim.keymap.set('', 'n', 'h') -- left
-vim.keymap.set('', 'i', 'l') -- right
-vim.keymap.set('n', 'u', 'gk') -- up
-vim.keymap.set('n', 'e', 'gj') -- down
+vim.keymap.set('', 'n', 'h', { silent = true }) -- left
+vim.keymap.set('', 'i', 'l', { silent = true }) -- right
+vim.keymap.set('n', 'u', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true }) -- up
+vim.keymap.set('n', 'e', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true }) -- down
 vim.keymap.set({ 'v', 'o' }, 'u', 'k') -- up
 vim.keymap.set({ 'v', 'o' }, 'e', 'j') -- down
 vim.keymap.set('', 'N', '^')
@@ -126,20 +126,20 @@ vim.keymap.set({ 'v', 'o' }, 'tW', 'iW')
 vim.keymap.set('n', '<c-t>', '>', { silent = true })
 vim.keymap.set('n', '<c-t><c-t>', '>>', { silent = true })
 vim.keymap.set('v', '<c-t>', '>gv', { silent = true })
-vim.keymap.set('n', '<c-v>', '>', { silent = true })
-vim.keymap.set('n', '<c-v><c-v>', '<<', { silent = true })
-vim.keymap.set('v', '<c-v>', '<gv', { silent = true })
+vim.keymap.set('n', '<c-d>', '>', { silent = true })
+vim.keymap.set('n', '<c-d><c-d>', '<<', { silent = true })
+vim.keymap.set('v', '<c-d>', '<gv', { silent = true })
 
 if vim.g.vscode then
     vim.keymap.set(
         'n',
         'u',
-        '<cmd>call VSCodeNotify("cursorMove", { "to": "up", "by": "wrappedLine", "value": v:count ? v:count : 1 })<cr>'
+        '<cmd>call VSCodeNotify("cursorMove", { "to": "up", "by": v:count ? "line" : "wrappedLine", "value": v:count ? v:count : 1 })<cr>'
     ) -- up
     vim.keymap.set(
         'n',
         'e',
-        '<cmd>call VSCodeNotify("cursorMove", { "to": "down", "by": "wrappedLine", "value": v:count ? v:count : 1 })<cr>'
+        '<cmd>call VSCodeNotify("cursorMove", { "to": "down", "by": v:count ? "line" : "wrappedLine", "value": v:count ? v:count : 1 })<cr>'
     ) -- down
 
     -- Prameter hints

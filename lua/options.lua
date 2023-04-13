@@ -17,7 +17,7 @@ vim.cmd([[
 vim.opt.signcolumn = 'yes:1'
 vim.opt.fillchars = 'eob: ' -- remove the ugly ~ at end of buffer
 vim.opt.wrap = true -- auto wrap long line
-vim.opt.scrolloff = 10 -- keep n lines on scroll vertical
+vim.opt.scrolloff = 0 -- keep n lines on scroll vertical
 
 vim.opt.cursorline = true -- show cursor line
 vim.cmd([[
@@ -105,3 +105,14 @@ end
 if vim.g.vscode then
     vim.g.loaded_matchparen = 0
 end
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+})
