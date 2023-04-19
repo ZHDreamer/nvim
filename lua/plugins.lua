@@ -1,5 +1,3 @@
-local fn = vim.fn
-
 -- Automatically install lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -108,7 +106,7 @@ lazy.setup {
         lazy = true,
         cmd = { 'Switch' },
         keys = {
-            { 'f', '<cmd>Switch<cr>' },
+            { 'F', '<cmd>Switch<cr>' },
         },
         config = function()
             require('editing.switch')
@@ -190,6 +188,7 @@ lazy.setup {
 
     {
         'tpope/vim-repeat',
+        enabled = false,
         keys = {
             -- { '.', '<plug>(RepeatDot)', mode = '' },
             -- { 'v', '<plug>(RepeatUndo)', mode = '' },
@@ -470,9 +469,9 @@ lazy.setup {
     {
         'nvim-treesitter/nvim-treesitter',
         -- cond = not vim.g.vscode,
-        run = ':TSUpdate',
         lazy = true,
         event = { 'BufEnter' },
+        build = ':TSUpdate',
         config = function()
             require('highlight.nvim-treesitter')
         end,

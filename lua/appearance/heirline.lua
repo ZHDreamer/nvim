@@ -1,5 +1,6 @@
 local conditions = require('heirline.conditions')
 local utils = require('heirline.utils')
+local icons = require('icons')
 
 local function setup_colors()
     local mocha = require('catppuccin.palettes').get_palette('mocha')
@@ -30,38 +31,32 @@ end
 local Align = { provider = '%=' }
 local Space = { provider = ' ' }
 
-local Icon = {
-    {
-        provider = '  ',
-        hl = function(self)
-            local color = self:mode_color()
-            return { fg = 'bg', bg = color }
-        end,
-    },
-    {
-        provider = '',
-        hl = function(self)
-            local color = self:mode_color()
-            return { fg = color, bg = 'bg' }
-        end,
-    },
-    update = {
-        'ModeChanged',
-    },
-}
+-- local Icon = {
+--     {
+--         provider = '  ',
+--         hl = function(self)
+--             local color = self:mode_color()
+--             return { fg = 'bg', bg = color }
+--         end,
+--     },
+--     {
+--         provider = '',
+--         hl = function(self)
+--             local color = self:mode_color()
+--             return { fg = color, bg = 'bg' }
+--         end,
+--     },
+--     update = {
+--         'ModeChanged',
+--     },
+-- }
 
 local ViMode = {
-    -- get vim current mode, this information will be required by the provider
-    -- and the highlight functions, so we compute it only once per component
-    -- evaluation and store it as a component attribute
     init = function(self)
         self.mode = vim.fn.mode(1) -- :h mode()
     end,
-    -- Now we define some dictionaries to map the output of mode() to the
-    -- corresponding string and color. We can put these into `static` to compute
-    -- them at initialisation time.
     static = {
-        mode_names = { -- change the strings if you like it vvvvverbose!
+        mode_names = {
             n = 'N',
             no = 'N',
             nov = 'N',
@@ -97,27 +92,29 @@ local ViMode = {
             ['!'] = '!',
             t = 'T',
         },
+        mode_colors = {
+            n = 'purple',
+            i = 'green',
+            v = 'cyan',
+            V = 'cyan',
+            ['\22'] = 'cyan',
+            c = 'red',
+            s = 'purple',
+            S = 'purple',
+            ['\19'] = 'purple',
+            R = 'orange',
+            r = 'orange',
+            ['!'] = 'red',
+            t = 'green',
+        },
     },
-    -- We can now access the value of mode() that, by now, would have been
-    -- computed by `init()` and use it to index our strings dictionary.
-    -- note how `static` fields become just regular attributes once the
-    -- component is instantiated.
-    -- To be extra meticulous, we can also add some vim statusline syntax to
-    -- control the padding and make sure our string is always at least 2
-    -- characters long. Plus a nice Icon.
-    {
-        provider = function(self)
-            return '%2(' .. self.mode_names[self.mode] .. '%) '
-        end,
-        hl = function(self)
-            local color = self:mode_color() -- here!
-            return { fg = color, bg = 'bg', bold = true }
-        end,
-    },
-    -- Same goes for the highlight. Now the foreground will change according to the current mode.
-    -- Re-evaluate the component only on ModeChanged event!
-    -- This is not required in any way, but it's there, and it's a small
-    -- performance improvement.
+    provider = function(self)
+        return '█%2(' .. self.mode_names[self.mode] .. '%) '
+    end,
+    hl = function(self)
+        local mode = self.mode:sub(1, 1)
+        return { fg = self.mode_colors[mode], bold = true }
+    end,
     update = {
         'ModeChanged',
         pattern = '*:*',
@@ -126,7 +123,6 @@ local ViMode = {
         end),
     },
 }
--- ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode })
 
 local FileIcon = {
     init = function(self)
@@ -142,6 +138,7 @@ local FileIcon = {
         return { fg = self.icon_color }
     end,
 }
+
 local FileName = {
     init = function(self)
         self.lfilename = vim.fn.fnamemodify(self.filename, ':.')
@@ -182,9 +179,6 @@ local FileFlags = {
         provider = '',
         hl = { fg = 'orange' },
     },
-    {
-        provider = ' ',
-    },
 }
 
 local FileType = {
@@ -219,6 +213,12 @@ local FileNameBlock = {
 
 local Git = {
     condition = conditions.is_git_repo,
+    static = {
+        branch_icon = icons.GitBranch,
+        add_icon = icons.GitAdd,
+        change_icon = icons.GitChange,
+        delete_icon = icons.GitDelete,
+    },
 
     init = function(self)
         self.status_dict = vim.b.gitsigns_status_dict
@@ -226,28 +226,28 @@ local Git = {
     end,
     {
         provider = function(self)
-            return ' ' .. self.status_dict.head
+            return self.branch_icon .. ' ' .. self.status_dict.head
         end,
         hl = { fg = 'git_branch', bold = false },
     },
     {
         provider = function(self)
             local count = self.status_dict.added or 0
-            return '  ' .. count
+            return ' ' .. self.add_icon .. ' ' .. count
         end,
         hl = { fg = 'git_add' },
     },
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
-            return '  ' .. count
+            return ' ' .. self.change_icon .. ' ' .. count
         end,
         hl = { fg = 'git_change' },
     },
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
-            return '  ' .. count
+            return ' ' .. self.delete_icon .. ' ' .. count
         end,
         hl = { fg = 'git_del' },
     },
@@ -264,12 +264,18 @@ local Ruler = {
 
 local ScrollBar = {
     static = {
-        sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
+        -- sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
+        sbar = { '🭶', '🭷', '🭸', '🭹', '🭺', '🭻' },
     },
     provider = function(self)
         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
         local lines = vim.api.nvim_buf_line_count(0)
-        local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+        local i
+        if lines > 0 then
+            i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+        else
+            i = #self.sbar
+        end
         return string.rep(self.sbar[i], 2)
     end,
     hl = function()
@@ -279,25 +285,36 @@ local ScrollBar = {
 
 local LSPActive = {
     condition = conditions.lsp_attached,
+    static = {
+        lsp_icon = icons.ActiveLSP,
+    },
     update = 'User LspRequest',
 
-    provider = function()
+    provider = function(self)
         local names = {}
-        for i, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+        for _, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
             table.insert(names, server.name)
         end
-        return ' [' .. table.concat(names, ' ') .. ']'
+        return self.lsp_icon .. '[' .. table.concat(names, ' ') .. ']'
     end,
     hl = { fg = 'green', bg = 'bg', bold = true },
+    on_click = {
+        callback = function()
+            vim.defer_fn(function()
+                vim.cmd('LspInfo')
+            end, 100)
+        end,
+        name = 'heirline_LSP',
+    },
 }
 
 local Diagnostics = {
     condition = conditions.lsp_attached,
     static = {
-        error_icon = ' ',
-        warn_icon = ' ',
-        info_icon = ' ',
-        hint_icon = ' ',
+        error_icon = icons.DiagnosticError,
+        warn_icon = icons.DiagnosticWarn,
+        info_icon = icons.DiagnosticInfo,
+        hint_icon = icons.DiagnosticHint,
     },
 
     init = function(self)
@@ -312,25 +329,25 @@ local Diagnostics = {
     {
         provider = function(self)
             -- 0 is just another output, we can decide to print it or not!
-            return self.error_icon .. self.errors .. ' '
+            return self.error_icon .. ' ' .. self.errors .. ' '
         end,
         hl = { fg = 'diag_error' },
     },
     {
         provider = function(self)
-            return self.warn_icon .. self.warnings .. ' '
+            return self.warn_icon .. ' ' .. self.warnings .. ' '
         end,
         hl = { fg = 'diag_warn' },
     },
     {
         provider = function(self)
-            return self.info_icon .. self.info .. ' '
+            return self.info_icon .. ' ' .. self.info .. ' '
         end,
         hl = { fg = 'diag_info' },
     },
     {
         provider = function(self)
-            return self.hint_icon .. self.hints
+            return self.hint_icon .. ' ' .. self.hints
         end,
         hl = { fg = 'diag_hint' },
     },
@@ -348,7 +365,7 @@ local DefaultStatusline = {
         Ruler,
     },
     {
-        Icon,
+        -- Icon,
         ViMode,
         Space,
         FileNameBlock,
@@ -374,7 +391,7 @@ local SpecialStatusline = {
             filetype = { '^git.*', 'fugitive' },
         }
     end,
-    Icon,
+    -- Icon,
     ViMode,
     Space,
     FileType,
@@ -415,7 +432,9 @@ local StatusLines = {
     DefaultStatusline,
 }
 
-require('heirline').setup { statusline = StatusLines }
+require('heirline').setup {
+    statusline = StatusLines,
+}
 
 require('heirline').load_colors(setup_colors())
 
