@@ -113,7 +113,7 @@ local ViMode = {
     end,
     hl = function(self)
         local mode = self.mode:sub(1, 1)
-        return { fg = self.mode_colors[mode], bold = true }
+        return { fg = self.mode_colors[mode], bg = 'bg', bold = true }
     end,
     update = {
         'ModeChanged',

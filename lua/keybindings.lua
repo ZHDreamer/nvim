@@ -99,6 +99,9 @@ vim.keymap.set({ 'v', 'o' }, 'a,', 'a[')
 vim.keymap.set({ 'v', 'o' }, 'tw', 'iw')
 vim.keymap.set({ 'v', 'o' }, 'tW', 'iW')
 
+-- Sortcuts
+vim.keymap.set('', '<C-a>', 'ggVG')
+
 -- tabs
 -- vim.keymap.set('n', '<leader>t', '<cmd>tabnew<CR>') -- creat new tab
 -- vim.keymap.set('n', '<Tab>', '<cmd>tabn<CR>') -- tab to next tab
