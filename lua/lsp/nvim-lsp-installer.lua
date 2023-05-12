@@ -8,7 +8,7 @@ local lsp_installer_servers = require("nvim-lsp-installer.servers")
 
 local servers = {
     -- 语言服务器名称：配置选项
-    clangd = require('lsp.clangd'),
+    clangd = require("lsp.clangd"),
     sumneko_lua = require("lsp.sumneko_lua"),
     pyright = require("lsp.pyright"),
     -- tsserver = require("lsp.tsserver"),
@@ -16,7 +16,7 @@ local servers = {
     -- cssls = require("lsp.cssls"),
     -- gopls = require("lsp.gopls"),
     -- jsonls = require("lsp.jsonls"),
-    zeta_note = require("lsp.zeta_note"),               -- Markdown
+    zeta_note = require("lsp.zeta_note"), -- Markdown
     -- sqls = require("lsp.sqls"),
     -- vuels = require("lsp.vuels")
 }
@@ -63,21 +63,19 @@ for server_name, server_options in pairs(servers) do
     -- 判断服务是否可用
     if server_available then
         -- 判断服务是否准备就绪，若就绪则启动服务
-        server:on_ready(
-            function()
-                -- keybind
-                server_options.on_attach = attach
-                -- options config
-                server_options.flags = {
-                    debounce_text_changes = 150
-                }
-                -- 启动服务
-                server:setup(server_options)
-            end
-        )
+        server:on_ready(function()
+            -- keybind
+            server_options.on_attach = attach
+            -- options config
+            server_options.flags = {
+                debounce_text_changes = 150,
+            }
+            -- 启动服务
+            server:setup(server_options)
+        end)
         -- 如果服务器没有下载，则通过 notify 插件弹出下载提示
         if not server:is_installed() then
-            vim.notify("Install Language Server : " .. server_name, "WARN", {title = "Language Servers"})
+            vim.notify("Install Language Server : " .. server_name, "WARN", { title = "Language Servers" })
             server:install()
         end
     end

@@ -1,6 +1,5 @@
-require'colorizer'.setup({
-    '*'
-},
-{
-    mode = 'background'
+require("colorizer").setup({
+    "*",
+}, {
+    mode = "background",
 })

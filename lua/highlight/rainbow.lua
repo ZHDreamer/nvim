@@ -16,4 +16,4 @@ vim.cmd([[
     \}
 ]])
 
-    -- \   'ctermfgs': ['#FFD700', '#DA70D6', '#87CEFA'],
+-- \   'ctermfgs': ['#FFD700', '#DA70D6', '#87CEFA'],

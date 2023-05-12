@@ -1,4 +1,4 @@
-require('Comment').setup {
+require("Comment").setup({
     -- Add a space b/w comment and the line
     -- @type boolean|fun():boolean
     padding = true,
@@ -12,35 +12,35 @@ require('Comment').setup {
     -- Could be a regex string or a function that returns a regex string.
     -- Example: Use '^$' to ignore empty lines
     -- @type string|fun():string
-    ignore = '^$',
+    ignore = "^$",
 
     -- LHS of toggle mappings in NORMAL + VISUAL mode
     -- @type table
     toggler = {
         -- Line-comment toggle keymap
-        line = 'C',
+        line = "C",
         -- Block-comment toggle keymap
-        block = 'gbc',
+        block = "gbc",
     },
 
     -- LHS of operator-pending mappings in NORMAL + VISUAL mode
     -- @type table
     opleader = {
         -- Line-comment keymap
-        line = 'C',
+        line = "C",
         -- Block-comment keymap
-        block = 'gb',
+        block = "gb",
     },
 
     -- LHS of extra mappings
     -- @type table
     extra = {
         -- Add comment on the line above
-        above = 'gcO',
+        above = "gcO",
         -- Add comment on the line below
-        below = 'gco',
+        below = "gco",
         -- Add comment at the end of line
-        eol = 'gca',
+        eol = "gca",
     },
 
     -- Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
@@ -66,4 +66,4 @@ require('Comment').setup {
     -- Post-hook, called after commenting is done
     -- @type nil|fun(ctx: CommentCtx)
     post_hook = nil,
-}
+})

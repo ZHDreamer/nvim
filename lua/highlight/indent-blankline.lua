@@ -1,11 +1,11 @@
-require('indent_blankline').setup{
+require("indent_blankline").setup({
     enabled = true,
     disable_with_nolist = true,
-    char = '▏',
-    char_blankline = '▏',
-    space_char_blankline = ' ',
-    context_char = '▏',
-    context_char_blankline = '▏',
+    char = "▏",
+    char_blankline = "▏",
+    space_char_blankline = " ",
+    context_char = "▏",
+    context_char_blankline = "▏",
     show_trailing_blankline_indent = false,
     indent_level = 10,
     max_indent_increase = 2,
@@ -30,10 +30,10 @@ require('indent_blankline').setup{
         "table",
         "tuple",
         "do_block",
-        'constructor'
+        "constructor",
     },
     use_treesitter = false,
     use_treesitter_scope = false,
-}
+})
 
 vim.cmd([[highlight IndentBlanklineContextChar guifg=#DA70D6 gui=nocombine cterm=nocombine]])

@@ -1,3 +1,3 @@
-require('hlargs').setup{
-    hl_priority=50000
-}
+require("hlargs").setup({
+    hl_priority = 50000,
+})
