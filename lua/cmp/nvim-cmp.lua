@@ -27,10 +27,22 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end,
     },
+    experimental = {
+        ghost_text = true,
+    },
     window = {
-        completion = cmp_window.bordered({ border = options.border }),
-        doccompletion = cmp_window.bordered({ borders = options.border }),
-        documentation = cmp_window.bordered({ border = options.border }),
+        completion = {
+            border = options.border,
+            winhighlight = "Normal:NormalFloat,Border:FloatBorder",
+        },
+        doccompletion = {
+            border = options.border,
+            winhighlight = "Normal:NormalFloat,Border:FloatBorder",
+        },
+        documentation = {
+            border = options.border,
+            winhighlight = "Normal:NormalFloat,Border:FloatBorder",
+        },
     },
     sources = cmp.config.sources({
         { name = "copilot" },

@@ -140,7 +140,14 @@ lazy.setup({
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = { "nvim-treesitter" },
+        after = { "nvim-treesitter" },
     },
+    -- {
+    --     "chrisgrieser/nvim-various-textobjs",
+    --     config = function()
+    --         require("editing.textobjects")
+    --     end,
+    -- },
     {
         "echasnovski/mini.ai",
         dependencies = { "nvim-treesitter" },
@@ -339,6 +346,18 @@ lazy.setup({
             require("appearance.nvim-tree")
         end,
     },
+    -- {
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     branch = "v2.x",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-tree/nvim-web-devicons",
+    --         "MunifTanjim/nui.nvim",
+    --     },
+    --     config = function()
+    --         require("appearance.neo-tree")
+    --     end,
+    -- },
 
     -- Which key
     {
@@ -416,6 +435,28 @@ lazy.setup({
             require("utils.telescope")
         end,
     },
+    {
+        "chrishrb/gx.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = true,
+        event = { "BufEnter" },
+        config = function()
+            require("gx").setup({
+                open_browser_app = "os_specific", -- specify your browser app; default for macOS is "open", Linux "xdg-open" and Windows "powershell.exe"
+                -- open_browser_args = { "--background" }, -- specify any arguments, such as --background for macOS' "open".
+                handlers = {
+                    plugin = true, -- open plugin links in lua (e.g. packer, lazy, ..)
+                    github = true, -- open github issues
+                    brewfile = true, -- open Homebrew formulaes and casks
+                    package_json = true, -- open dependencies from package.json
+                    search = true, -- search the web/selection on the web if nothing else is found
+                },
+                handler_options = {
+                    search_engine = "google", -- you can select between google, bing and duckduckgo
+                },
+            })
+        end,
+    },
 
     -- IEM support
     {
@@ -441,10 +482,11 @@ lazy.setup({
 
     -- Color highlighter for hexrgb and termcolor
     {
-        "norcalli/nvim-colorizer.lua",
+        "NvChad/nvim-colorizer.lua",
         cond = not vim.g.vscode,
-        lazy = true,
-        event = { "BufEnter" },
+        -- lazy = true,
+        -- event = { "BufEnter" },
+        after = { "catppuccin" },
         config = function()
             require("highlight.nvim-colorizer")
         end,

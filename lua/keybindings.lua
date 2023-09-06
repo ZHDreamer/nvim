@@ -96,22 +96,22 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- Custom operator-pending key
 --
 -- tex $ support
-vim.keymap.set("o", "lo", ":<C-u>normal! T$vt$<CR>")
-vim.keymap.set("o", "ao", ":<C-u>normal! F$vf$<CR>")
-vim.keymap.set("v", "lo", "T$ot$")
-vim.keymap.set("v", "ao", "F$of$")
+vim.keymap.set("o", "l$", ":<C-u>normal! T$vt$<CR>")
+vim.keymap.set("o", "a$", ":<C-u>normal! F$vf$<CR>")
+vim.keymap.set("v", "l$", "T$ot$")
+vim.keymap.set("v", "a$", "F$of$")
 
-vim.keymap.set({ "v", "o" }, "te", "i(")
-vim.keymap.set({ "v", "o" }, "ae", "a(")
-vim.keymap.set({ "v", "o" }, "tu", "i{")
-vim.keymap.set({ "v", "o" }, "au", "a{")
-vim.keymap.set({ "v", "o" }, "t,", "i[")
-vim.keymap.set({ "v", "o" }, "a,", "a[")
+-- vim.keymap.set({ "v", "o" }, "te", "i(")
+-- vim.keymap.set({ "v", "o" }, "ae", "a(")
+-- vim.keymap.set({ "v", "o" }, "tu", "i{")
+-- vim.keymap.set({ "v", "o" }, "au", "a{")
+-- vim.keymap.set({ "v", "o" }, "t,", "i[")
+-- vim.keymap.set({ "v", "o" }, "a,", "a[")
 vim.keymap.set({ "v", "o" }, "tw", "iw")
 vim.keymap.set({ "v", "o" }, "tW", "iW")
 
 -- Sortcuts
-vim.keymap.set("", "<M-a>", "ggVG")
+vim.keymap.set({ "n" }, "<M-a>", "ggVG")
 
 -- tabs
 -- vim.keymap.set('n', '<leader>t', '<cmd>tabnew<CR>') -- creat new tab

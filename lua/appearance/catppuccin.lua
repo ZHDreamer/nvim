@@ -82,7 +82,7 @@ require("catppuccin").setup({
     color_overrides = {},
     custom_highlights = {
         NormalFloat = { bg = colors.base }, -- set the floating window bg
-        FloatBorder = { fg = colors.mauve },
+        FloatBorder = { fg = colors.surface1 },
         gitBranch = { fg = "#F3F99D" },
         diffAdded = { fg = colors.green }, -- diff mode: Added line |diff.txt|
         diffChanged = { fg = colors.blue }, -- diff mode: Changed line |diff.txt|

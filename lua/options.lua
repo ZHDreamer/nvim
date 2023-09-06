@@ -1,19 +1,13 @@
 -- style
 vim.opt.termguicolors = true -- embed 24-bit color in nvim
 vim.opt.laststatus = 3
+vim.opt.showmode = false -- don't show mode because we have statusline
 -- line style
 vim.opt.number = true -- show line number
 vim.opt.relativenumber = true -- show relative line number
 -- Auto toggle relative line number when lost focus
 -- https://github.com/jeffkreeftmeijer/vim-numbertoggle
 -- set -g focus-events on in tmux.conf to trigger focus event
-vim.cmd([[
-    augroup numbertoggle
-        autocmd!
-        autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
-        autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
-    augroup END
-]])
 vim.opt.signcolumn = "yes:1"
 vim.opt.fillchars = "eob: " -- remove the ugly ~ at end of buffer
 vim.opt.wrap = true -- auto wrap long line
@@ -52,25 +46,13 @@ vim.opt.mouse = "a" -- enable mouse
 vim.opt.undofile = true -- keep undo history
 
 vim.opt.autoread = true
+vim.opt.autowrite = true
+vim.opt.confirm = true -- confirm when quit without save
 -- vim.cmd[[ au BufLeave * silent w ]] -- Autowrite when moving between buffers
 
 -- Don't creat comment when adding new line after a comment
-vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
-
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "*",
-    callback = function()
-        if vim.tbl_contains({ "quickfix", "help" }, vim.bo.buftype) then
-            return
-        elseif vim.tbl_contains({ "gitcommit", "gitrebase", "svn", "hgcommit" }, vim.bo.filetype) then
-            return
-        end
-        if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
-            vim.fn.setpos(".", vim.fn.getpos("'\""))
-            vim.cmd("silent! foldopen")
-        end
-    end,
-})
+-- vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
+-- vim.opt.formatopitons = "jqlnt"
 
 -- vim.g.python3_host_prog = '/usr/bin/python3'
 vim.g.python3_host_prog = "C:/Users/ZHDreamer/scoop/shims/python3"
@@ -101,17 +83,6 @@ for _, builtin_plugin in ipairs(disable_builtin_plugins) do
 end
 
 vim.g.loaded_matchparen = 0
-
---  Highlight on yank
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-    pattern = "*",
-    group = highlight_group,
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
 
 local M = {}
 
