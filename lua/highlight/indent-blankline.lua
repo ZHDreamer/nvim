@@ -1,39 +1,33 @@
-require("indent_blankline").setup({
-    enabled = true,
-    disable_with_nolist = true,
-    char = "▏",
-    char_blankline = "▏",
-    space_char_blankline = " ",
-    context_char = "▏",
-    context_char_blankline = "▏",
-    show_trailing_blankline_indent = false,
-    indent_level = 10,
-    max_indent_increase = 2,
-    show_first_indent_level = true,
-    show_current_context = true,
-    show_current_context_start = false,
-    context_patterns = {
-        "class",
-        "^func",
-        "method",
-        "^if",
-        "while",
-        "for",
-        "with",
-        "try",
-        "except",
-        "arguments",
-        "argument_list",
-        "object",
-        "dictionary",
-        "element",
-        "table",
-        "tuple",
-        "do_block",
-        "constructor",
-    },
-    use_treesitter = false,
-    use_treesitter_scope = false,
-})
+local highlight = {
+    "IndentBackLineChar1",
+    "IndentBackLineChar2",
+    "IndentBackLineChar3",
+}
 
-vim.cmd([[highlight IndentBlanklineContextChar guifg=#DA70D6 gui=nocombine cterm=nocombine]])
+local hooks = require("ibl.hooks")
+
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    vim.api.nvim_set_hl(0, "IndentBackLineChar1", { fg = "#FFD700", sp = "#FFD700" })
+    vim.api.nvim_set_hl(0, "IndentBackLineChar2", { fg = "#DA70D6", sp = "#DA70D6" })
+    vim.api.nvim_set_hl(0, "IndentBackLineChar3", { fg = "#87CEFA", sp = "#87CEFA" })
+end)
+
+require("ibl").setup({
+    enabled = true,
+    debounce = 100,
+    indent = {
+        char = "▏",
+        -- highlight = highlight,
+        smart_indent_cap = true,
+    },
+    whitespace = { highlight = { "Whitespace", "NonText" } },
+    scope = {
+        enabled = true,
+        show_start = true,
+        show_end = false,
+        show_exact_scope = false,
+        injected_languages = true,
+        highlight = highlight,
+        priority = 1024,
+    },
+})

@@ -9,8 +9,8 @@ vim.keymap.set("n", "u", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "e", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true }) -- down
 vim.keymap.set({ "v", "o" }, "u", "k") -- up
 vim.keymap.set({ "v", "o" }, "e", "j") -- down
-vim.keymap.set("", "N", "^")
-vim.keymap.set("", "I", "$")
+vim.keymap.set("", "m", "^")
+vim.keymap.set("", "o", "$")
 vim.keymap.set("n", "U", "5u", { remap = true })
 vim.keymap.set("n", "E", "5e", { remap = true })
 vim.keymap.set({ "v", "o" }, "U", "5k") -- up
@@ -29,6 +29,9 @@ vim.keymap.set("", "l", "F")
 vim.keymap.set("", "y", "f")
 vim.keymap.set("", "L", "T")
 vim.keymap.set("", "Y", "t")
+
+vim.keymap.set("n", "O", "<C-i>") -- jump in
+vim.keymap.set("n", "M", "<C-o>") -- jump out
 
 -- insert mode
 vim.keymap.set("", "a", "i")
@@ -60,10 +63,10 @@ vim.keymap.set("n", "<leader>h", ":split<CR>")
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>")
 
 -- Window navigation
-vim.keymap.set("n", "<A-h>", "<C-w>h")
-vim.keymap.set("n", "<A-i>", "<C-w>l")
-vim.keymap.set("n", "<A-e>", "<C-w>k")
-vim.keymap.set("n", "<A-n>", "<C-w>j")
+vim.keymap.set("n", "<C-n>", "<C-w>h")
+vim.keymap.set("n", "<C-i>", "<C-w>l")
+vim.keymap.set("n", "<C-u>", "<C-w>k")
+vim.keymap.set("n", "<C-e>", "<C-w>j")
 
 -- Window resize
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
@@ -72,10 +75,14 @@ vim.keymap.set("n", "<C-Up>", ":resize -2<CR>")
 vim.keymap.set("n", "<C-Down>", ":resize +2<CR>")
 
 -- Search
-vim.keymap.set("n", "<", "Nzz") -- previous search item
-vim.keymap.set("n", ",", "nzz") -- next search item
+vim.keymap.set("n", "N", "Nzz") -- previous search item
+vim.keymap.set("n", "I", "nzz") -- next search item
 vim.keymap.set("n", "k", "/")
 vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<CR>") -- cancel search highlight
+vim.keymap.set("n", "gi", "gn", { desc = "select next search item" })
+vim.keymap.set("n", "gn", "gN", { desc = "select prev search item" })
+vim.keymap.set("n", "cgi", "cgn", { desc = "change next search item" })
+vim.keymap.set("n", "cgn", "cgN", { desc = "change prev search item" })
 
 -- Dot repeat for visual mode
 vim.keymap.set("", "/", ".")
@@ -159,7 +166,7 @@ if vim.g.vscode then
     -- Prameter hints
     vim.keymap.set({ "n", "i" }, "<c-p>", '<cmd>call VSCodeNotify("editor.action.triggerParameterHints")<cr>')
     -- Comment line
-    vim.keymap.set("", "C", '<cmd>call VSCodeNotifyVisual("editor.action.commentLine", 0)<cr>')
+    vim.keymap.set("", "C", '<cmd>call VSCodeNotify("editor.action.commentLine", 0)<cr>')
     -- Go file
     vim.keymap.set("n", "<leader>ff", '<cmd>call VSCodeNotify("workbench.action.quickOpen")<cr>')
 end

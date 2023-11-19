@@ -264,8 +264,8 @@ local Ruler = {
 
 local ScrollBar = {
     static = {
-        -- sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' },
-        sbar = { "🭶", "🭷", "🭸", "🭹", "🭺", "🭻" },
+        sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" },
+        -- sbar = { "🭶", "🭷", "🭸", "🭹", "🭺", "🭻" },
     },
     provider = function(self)
         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
@@ -288,14 +288,14 @@ local LSPActive = {
     static = {
         lsp_icon = icons.ActiveLSP,
     },
-    update = "User LspRequest",
+    update = { "LspAttach", "LspDetach" },
 
     provider = function(self)
         local names = {}
         for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-            if server.name ~= "copilot" then
-                table.insert(names, server.name)
-            end
+            -- if server.name ~= "copilot" then
+            table.insert(names, server.name)
+            -- end
         end
         return self.lsp_icon .. " [" .. table.concat(names, " ") .. "]"
     end,
@@ -317,6 +317,7 @@ local Copilot = {
         warning_icon = icons.CopilotWarning .. " ",
         offline_icon = icons.CopilotOffline .. " ",
     },
+    update = { "LspAttach", "LspDetach" },
     init = function(self)
         local api = require("copilot.api")
         api.register_status_notification_handler(function(data)
@@ -342,6 +343,14 @@ local Copilot = {
     hl = function(self)
         return { fg = self.fg, bg = "bg" }
     end,
+    on_click = {
+        callback = function()
+            vim.defer_fn(function()
+                vim.cmd("Copilot status")
+            end, 100)
+        end,
+        name = "heirline_LSP",
+    },
 }
 
 local Diagnostics = {
@@ -414,7 +423,7 @@ local DefaultStatusline = {
         Space,
         LSPActive,
         Space,
-        Copilot,
+        -- Copilot,
         Space,
         Ruler,
         Space,
