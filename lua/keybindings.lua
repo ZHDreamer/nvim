@@ -2,6 +2,7 @@
 vim.keymap.set({ "n", "v" }, "<space>", "<nop>", { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
 -- curser movement for colemak
 vim.keymap.set("", "n", "h", { silent = true }) -- left
 vim.keymap.set("", "i", "l", { silent = true }) -- right
@@ -11,10 +12,10 @@ vim.keymap.set({ "v", "o" }, "u", "k") -- up
 vim.keymap.set({ "v", "o" }, "e", "j") -- down
 vim.keymap.set("", "m", "^")
 vim.keymap.set("", "o", "$")
-vim.keymap.set("n", "U", "5u", { remap = true })
-vim.keymap.set("n", "E", "5e", { remap = true })
-vim.keymap.set({ "v", "o" }, "U", "5k") -- up
-vim.keymap.set({ "v", "o" }, "E", "5j") -- down
+vim.keymap.set("n", "U", "10u", { remap = true })
+vim.keymap.set("n", "E", "10e", { remap = true })
+vim.keymap.set({ "v", "o" }, "U", "10k") -- up
+vim.keymap.set({ "v", "o" }, "E", "10j") -- down
 
 -- vim.keymap.set('', 'h', 'g')
 -- vim.keymap.set('', 'mm', 'gg')
@@ -26,7 +27,7 @@ vim.keymap.set("", ".", "e")
 vim.keymap.set("", ">", "E")
 
 vim.keymap.set("", "l", "F")
-vim.keymap.set("", "y", "f")
+vim.keymap.set("", "y", "f", { nowait = true })
 vim.keymap.set("", "L", "T")
 vim.keymap.set("", "Y", "t")
 
@@ -46,7 +47,7 @@ vim.keymap.set("n", "gt", "gi")
 -- visual mode
 vim.keymap.set("", "w", "v")
 vim.keymap.set("", "W", "V")
-vim.keymap.set("", "<C-w>", "<C-v>")
+vim.keymap.set("", "<C-w>", "<C-v>", { nowait = true })
 
 -- modify
 vim.keymap.set("n", "v", "u")
@@ -57,6 +58,9 @@ vim.keymap.set("v", "V", "U")
 
 vim.keymap.set("", "f", "y")
 vim.keymap.set("v", "p", "pgvy")
+
+-- save
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>")
 
 -- Split windows
 vim.keymap.set("n", "<leader>h", ":split<CR>")
