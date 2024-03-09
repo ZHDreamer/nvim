@@ -45,6 +45,11 @@ vim.opt.clipboard = "unnamed" -- use system clipboard
 vim.opt.mouse = "a" -- enable mouse
 vim.opt.undofile = true -- keep undo history
 
+-- EOL and EOF
+vim.opt.fileformat = "unix"
+vim.opt.endofline = true
+vim.opt.endofline = true
+
 vim.opt.autoread = true
 vim.opt.autowrite = true
 vim.opt.confirm = true -- confirm when quit without save
