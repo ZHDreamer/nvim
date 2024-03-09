@@ -44,6 +44,7 @@ vim.opt.shiftround = true -- <, >, <C-d>, <C-t> will align with indent length
 vim.opt.clipboard = "unnamed" -- use system clipboard
 vim.opt.mouse = "a" -- enable mouse
 vim.opt.undofile = true -- keep undo history
+vim.opt.history = 10000 -- keep command history
 
 -- EOL and EOF
 vim.opt.fileformat = "unix"

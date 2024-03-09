@@ -83,6 +83,7 @@ vim.keymap.set("n", "gi", "gn", { desc = "select next search item" })
 vim.keymap.set("n", "gn", "gN", { desc = "select prev search item" })
 vim.keymap.set("n", "cgi", "cgn", { desc = "change next search item" })
 vim.keymap.set("n", "cgn", "cgN", { desc = "change prev search item" })
+vim.keymap.set("c", "<C-r>", "<cmd>Telescope command_history<CR>")
 
 -- Dot repeat for visual mode
 vim.keymap.set("", "/", ".")
